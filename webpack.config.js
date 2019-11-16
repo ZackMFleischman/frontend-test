@@ -1,8 +1,10 @@
+const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/Main.js',
+    entry: path.resolve(__dirname, 'src/Main.js'),
     module: {
         rules: [
             {
@@ -26,17 +28,24 @@ module.exports = {
         extensions: ['*', '.js', '.jsx', '.scss', '.sass', '.css']
     },
     output: {
-        path: __dirname + '/dist',
+        path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         filename: 'bundle.js'
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: './src/index.html' }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src/index.html'),
+            filename: path.resolve(__dirname, 'dist/index.html')
+        }),
+        new CopyWebpackPlugin([{ from: 'static' }]),
         new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-        contentBase: './dist',
+        contentBase: path.resolve(__dirname, 'dist'),
         hot: true,
         open: true
+    },
+    performance: {
+        hints: false
     }
 };
