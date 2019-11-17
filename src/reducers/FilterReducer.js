@@ -1,9 +1,11 @@
 export const FilterActionTypes = {
-    CHANGE_SELECTED_CATEGORY: 'CHANGE_SELECTED_CATEGORY'
+    CHANGE_SELECTED_CATEGORY: 'CHANGE_SELECTED_CATEGORY',
+    CHANGE_SELECTED_PRICE: 'CHANGE_SELECTED_PRICE'
 };
 
 const initialFilterState = {
-    selectedCategory: 'all'
+    selectedCategory: 'all',
+    selectedPrice: 'all'
 };
 
 export const filterReducer = (state = initialFilterState, action) => {
@@ -12,6 +14,12 @@ export const filterReducer = (state = initialFilterState, action) => {
             return {
                 ...state,
                 selectedCategory: action.payload
+            };
+
+        case FilterActionTypes.CHANGE_SELECTED_PRICE:
+            return {
+                ...state,
+                selectedPrice: action.payload
             };
 
         default: return state

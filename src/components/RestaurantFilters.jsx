@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './RestaurantFilters.scss';
 import CategoryFilterContainer from './CategoryFilterContainer';
+import PriceFilterContainer from './PriceFilterContainer';
 
 const RestaurantFilters = (props) => {
     return (
@@ -10,7 +10,7 @@ const RestaurantFilters = (props) => {
             <div className='restaurant-filter-options'>
                 <span>Filter By:  </span>
                 <span> () Open Now </span>
-                <span> Price </span>
+                <PriceFilterContainer />
                 <CategoryFilterContainer />
             </div>
             <button>Clear All</button>
