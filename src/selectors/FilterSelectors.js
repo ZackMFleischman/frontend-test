@@ -8,3 +8,5 @@ export const getCategoriesToDisplay = (state) => {
 
     return [allCategory, ...otherCategories];
 };
+
+export const getCategoryFromFilter = (state) => state.filters.selectedCategory;

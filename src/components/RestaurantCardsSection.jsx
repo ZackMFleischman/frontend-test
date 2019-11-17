@@ -25,9 +25,14 @@ class RestaurantCardsSection extends React.PureComponent {
         </div>
     );
 
+    handleLoadMoreClicked = () => {
+        console.log('clicked load more');
+        this.props.onLoadMoreClicked();
+    }
+
     loadMoreButton = (
         <div>
-            <button style={ { width: '200px' } }>Load More</button>
+            <button style={ { width: '200px' } } onClick={ this.handleLoadMoreClicked }>Load More</button>
         </div>
     );
 
@@ -42,7 +47,10 @@ class RestaurantCardsSection extends React.PureComponent {
     }
 }
 
-RestaurantCardsSection.propTypes = {}
+RestaurantCardsSection.propTypes = {
+    onLoadMoreClicked: PropTypes.func
+}
+
 RestaurantCardsSection.default = {}
 
 export default RestaurantCardsSection;

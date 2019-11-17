@@ -1,7 +1,7 @@
 import { getLoadingSuccessState, getLoadingErrorState, getLoadingState } from './LoadingStatusStates';
 
 // This is a generic reducer for any fetching action that follows the Start, Success, Error action type scheme.
-const fetchReducer = (state, action, field, fetchActionTypes) => {
+const fetchReducer = (state, action, field, fetchActionTypes, successOverride) => {
     switch (action.type) {
         case fetchActionTypes.start:
             return {
@@ -10,7 +10,7 @@ const fetchReducer = (state, action, field, fetchActionTypes) => {
             };
 
         case fetchActionTypes.success:
-            return {
+            return successOverride ? successOverride(state, action) : {
                 ...state,
                 [field]: getLoadingSuccessState(action.payload)
             };

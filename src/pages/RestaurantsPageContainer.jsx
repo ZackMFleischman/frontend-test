@@ -10,7 +10,7 @@ class RestaurantsPageContainer extends React.Component {
             this.props.fetchCategories();
 
         if (shouldLoad(this.props.restaurantsLoadingStatus))
-            this.props.fetchRestaurants(this.props.selectedCategory);
+            this.props.fetchRestaurants();
     }
 
     render() {
@@ -32,7 +32,6 @@ const mapStateToProps = (state) => ({
     categories: state.yelp.categories.data,
     categoriesLoadingStatus: state.yelp.categories.loadingStatus,
     restaurantsLoadingStatus: state.yelp.restaurants.loadingStatus,
-    selectedCategory: state.filters.selectedCategory,
     error: state.yelp.categories.error,
     headerTitle: state.copy.header.title,
     headerDescription: state.copy.header.description
