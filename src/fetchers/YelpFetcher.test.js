@@ -10,6 +10,7 @@ describe('YelpFetcher tests', () => {
     beforeEach(() => fetchJson.mockReset());
 
     it('fetchCategories should fetch the right url', async () => {
+        console.log("Environment Vars: %o", process.env);
         const expectedUrl = getExpectedUrl('/categories');
         await yelpFetcher.fetchCategories();
         expect(fetchJson).toHaveBeenCalledWith(expectedUrl);

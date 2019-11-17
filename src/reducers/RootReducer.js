@@ -1,15 +1,9 @@
 import { combineReducers } from 'redux';
 import { getStaticCopy } from '../Copy.js';
-
-const counterReducer = (state = 0, action) => {
-    switch (action.type) {
-        case 'UPDATE_COUNTER': return state + 1
-        default: return state
-    }
-}
+import { yelpReducer } from './YelpReducer.js';
 
 export const rootReducer = combineReducers({
-    counter: counterReducer,
+    yelp: yelpReducer,
     copy: (state = getStaticCopy()) => state
 });
 

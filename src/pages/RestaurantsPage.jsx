@@ -1,9 +1,11 @@
 import React from 'react';
+import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 
 import Header from '../components/Header';
 import RestaurantFilterer from '../components/RestaurantFilterer';
 import RestaurantCardsSection from '../components/RestaurantCardsSection';
+import withLoader from '../hocs/WithLoader';
 
 import './RestaurantsPage.scss';
 
@@ -18,4 +20,7 @@ const RestaurantsPage = (props) => {
     );
 };
 
-export default withRouter(RestaurantsPage);
+export default compose(
+    withLoader,
+    withRouter
+)(RestaurantsPage);
