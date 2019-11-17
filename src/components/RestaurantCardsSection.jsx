@@ -7,6 +7,7 @@ import RestaurantCard from './RestaurantCard';
 class RestaurantCardsSection extends React.PureComponent {
     renderRestaurantCard = restaurantData => (
         <RestaurantCard
+            key={ restaurantData }
             data={ restaurantData }
         />
     );

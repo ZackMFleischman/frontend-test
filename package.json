@@ -70,7 +70,9 @@
     },
     "dependencies": {
         "@types/jest": "^24.0.23",
+        "es6-promise": "^4.2.8",
         "express": "^4.17.1",
+        "isomorphic-fetch": "^2.2.1",
         "prop-types": "^15.7.2",
         "react-dom": "^16.12.0",
         "react-redux": "^7.1.3",
