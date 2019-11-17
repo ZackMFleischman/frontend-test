@@ -19,7 +19,7 @@ class YelpFetcher {
         const queryParams = getQueryParameters({
             category,
             term: 'restaurants',
-            location: 'Las%20Vegas',
+            location: 'Las Vegas',
         });
 
         return this.fetchJson(`${this.baseUrl}/businesses/search${queryParams}`);
