@@ -1,3 +1,5 @@
+import { getOnlyShowOpenNow, getPriceFilter } from "./FilterSelectors";
+
 export const getCurrentRestaurantCategory = (state) => {
     if (state.yelp.restaurants.data)
         return state.yelp.restaurants.data.currentCategory;
@@ -12,9 +14,23 @@ export const getCurrentRestaurantOffset = (state) => {
         return 0;
 }
 
-export const getRestaurantsAsArray = (state) => {
+export const getFilteredRestaurants = (state) => {
+    const priceFilter = getPriceFilter(state);
+    const onlyShowOpenNow = getOnlyShowOpenNow(state);
+
+    return _getArrayOfAllRestaurants(state)
+        .filter(restaurant => (
+            passesPriceFilter(restaurant, priceFilter) &&
+            passesOnlyShowOpenNowFilter(restaurant, onlyShowOpenNow)
+        ));
+}
+
+const passesPriceFilter = (restaurant, priceFilter) => priceFilter === 'all' || restaurant.price === priceFilter;
+const passesOnlyShowOpenNowFilter = (restaurant, onlyShowOpenNow) => !onlyShowOpenNow || !restaurant.is_closed;
+
+const _getArrayOfAllRestaurants = (state) => {
     if (state.yelp.restaurants.data)
         return Object.values(state.yelp.restaurants.data.restaurantMap);
     else
         return [];
-}
+};

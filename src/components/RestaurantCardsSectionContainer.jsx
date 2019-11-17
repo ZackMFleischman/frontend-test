@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchMoreRestaurants } from '../actions/YelpActions';
 import RestaurantsCardsSection from './RestaurantCardsSection';
-import { getRestaurantsAsArray } from '../selectors/RestaurantSelectors';
+import { getFilteredRestaurants } from '../selectors/RestaurantSelectors';
 
 class RestaurantsCardsSectionContainer extends React.PureComponent {
     render() {
@@ -16,7 +16,7 @@ class RestaurantsCardsSectionContainer extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    restaurants: getRestaurantsAsArray(state),
+    restaurants: getFilteredRestaurants(state),
 });
 
 const mapDispatchToProps = {

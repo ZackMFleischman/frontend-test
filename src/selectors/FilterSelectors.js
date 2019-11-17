@@ -9,4 +9,6 @@ export const getCategoriesToDisplay = (state) => {
     return [allCategory, ...otherCategories];
 };
 
-export const getCategoryFromFilter = (state) => state.filters.selectedCategory;
+export const getCategoryFilter = (state) => state.filters.selectedCategory;
+export const getPriceFilter = (state) => state.filters.selectedPrice;
+export const getOnlyShowOpenNow = (state) => state.filters.onlyShowOpenNow;

@@ -2,7 +2,7 @@ import { getYelpFetcher } from '../fetchers/YelpFetcherFactory';
 import { fetchCategoriesActionTypes, fetchRestaurantsActionTypes, fetchMoreRestaurantsActionTypes } from './YelpActionTypes';
 import fetchData from './actionUtils/FetchData';
 import { getCurrentRestaurantOffset } from '../selectors/RestaurantSelectors';
-import { getCategoryFromFilter } from '../selectors/FilterSelectors';
+import { getCategoryFilter } from '../selectors/FilterSelectors';
 
 export const fetchCategories = () => (dispatch) => {
     return fetchData(
@@ -13,7 +13,7 @@ export const fetchCategories = () => (dispatch) => {
 };
 
 export const fetchRestaurants = () => (dispatch, getState) => {
-    const categoryToFetch = getCategoryFromFilter(getState());
+    const categoryToFetch = getCategoryFilter(getState());
     return fetchData(
         () => getYelpFetcher().fetchRestaurants(categoryToFetch),
         fetchRestaurantsActionTypes,
@@ -23,7 +23,7 @@ export const fetchRestaurants = () => (dispatch, getState) => {
 
 export const fetchMoreRestaurants = () => (dispatch, getState) => {
     const state = getState();
-    const categoryToFetch = getCategoryFromFilter(state);
+    const categoryToFetch = getCategoryFilter(state);
     const offset = getCurrentRestaurantOffset(state);
 
     return fetchData(
