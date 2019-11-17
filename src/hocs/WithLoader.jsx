@@ -2,12 +2,19 @@ import React from 'react';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const withLoader = (Component) => {
-    return ({ isLoading, otherProps }) => {
-        if (isLoading)
-            return <LoadingSpinner />;
-        else
-            return <Component { ...otherProps } />;
+    class WithLoader extends React.PureComponent {
+        render() {
+            const { isLoading, ...otherProps } = this.props;
+            if (isLoading)
+                return <LoadingSpinner />;
+            else
+                return <Component { ...otherProps } />;
+        }
     }
+
+    WithLoader.displayName = `withLoader(${Component.displayName})`;
+
+    return WithLoader;
 }
 
 export default withLoader;

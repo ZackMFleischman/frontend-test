@@ -11,11 +11,14 @@ class RestaurantsPageContainer extends React.Component {
     }
 
     render() {
+        console.log('props: %o', this.props);
         return (
             <RestaurantsPage
                 isLoading={ this.props.isLoading }
                 categories={ this.props.categories }
                 error={ this.props.error }
+                headerTitle={ this.props.headerTitle }
+                headerDescription={ this.props.headerDescription }
             />
         );
     }
@@ -30,7 +33,9 @@ RestaurantsPageContainer.propsTypes = {
 const mapStateToProps = (state) => ({
     isLoading: isNotLoaded(state.yelp.categories),
     categories: state.yelp.categories.data,
-    error: state.yelp.categories.error
+    error: state.yelp.categories.error,
+    headerTitle: state.copy.header.title,
+    headerDescription: state.copy.header.description
 });
 
 const mapDispatchToProps = {
