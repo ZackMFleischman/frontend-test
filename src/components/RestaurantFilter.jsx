@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './RestaurantFilterer.scss';
+import './RestaurantFilter.scss';
 
-const RestaurantFilterer = (props) => {
+const RestaurantFilter = (props) => {
     return (
-        <div className='restaurant-filterer-container'>
+        <div className='restaurant-filter-container'>
             <div className='restaurant-filter-options'>
                 <span>Filter By:</span>
                 <div>Open Now</div>
@@ -17,11 +17,11 @@ const RestaurantFilterer = (props) => {
     );
 }
 
-RestaurantFilterer.propTypes = {
+RestaurantFilter.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string
 }
 
-RestaurantFilterer.default = {}
+RestaurantFilter.default = {}
 
-export default RestaurantFilterer;
+export default RestaurantFilter;

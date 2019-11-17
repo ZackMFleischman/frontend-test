@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
 import Header from '../components/Header';
-import RestaurantFilterer from '../components/RestaurantFilterer';
+import RestaurantFilter from '../components/RestaurantFilter';
 import RestaurantCardsSection from '../components/RestaurantCardsSection';
 import withLoadingSpinner from '../hocs/WithLoadingSpinner';
 
@@ -14,7 +14,7 @@ const RestaurantsPage = (props) => {
     return (
         <div className='restaurants-page'>
             <Header title={ props.headerTitle } description={ props.headerDescription } className="restaurant-header" />
-            <RestaurantFilterer />
+            <RestaurantFilter />
             <RestaurantCardsSection restaurants={ [0, 1, 2, 3, 4, 5, 6, 7] } />
             <button onClick={ () => props.history.push('/restaurant-details/123456') }>Go to details page</button>
         </div>
