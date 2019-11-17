@@ -2,30 +2,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './RestaurantCardsSection.scss';
+import RestaurantCard from './RestaurantCard';
 
-const RestaurantCard = (props) => {
-    return <div className='restaurant-card'>{ props.title }</div>
-};
+class RestaurantCardsSection extends React.PureComponent {
+    renderRestaurantCard = restaurantData => (
+        <RestaurantCard
+            data={ restaurantData }
+        />
+    );
 
-const RestaurantCardsSection = (props) => {
-    return (
-        <div className='restaurant-cards-section'>
-            <h2>All Restaurants</h2>
-            <div className='restaurant-cards-container'>
-                <RestaurantCard title={ 'card 1' } />
-                <RestaurantCard title={ 'card 2' } />
-                <RestaurantCard title={ 'card 3' } />
-                <RestaurantCard title={ 'card 4' } />
-                <RestaurantCard title={ 'card 5' } />
-                <RestaurantCard title={ 'card 6' } />
-                <RestaurantCard title={ 'card 7' } />
-                <RestaurantCard title={ 'card 8' } />
-            </div>
-            <div>
-                <button style={ { width: '200px' } }>Load More</button>
-            </div>
+    renderRestaurantCards = restaurants => {
+        if (restaurants)
+            return restaurants.map(this.renderRestaurantCard);
+        else
+            return <span>No Restaurants Available</span>;
+    };
+
+    renderCardsContainer = () => (
+        <div className='restaurant-cards-container'>
+            { this.renderRestaurantCards(this.props.restaurants) }
         </div>
     );
+
+    loadMoreButton = (
+        <div>
+            <button style={ { width: '200px' } }>Load More</button>
+        </div>
+    );
+
+    render() {
+        return (
+            <div className='restaurant-cards-section' >
+                <h2>All Restaurants</h2>
+                { this.renderCardsContainer() }
+                { this.loadMoreButton }
+            </div>
+        );
+    }
 }
 
 RestaurantCardsSection.propTypes = {}

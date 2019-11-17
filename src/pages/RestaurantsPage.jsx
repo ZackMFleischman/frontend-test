@@ -9,12 +9,12 @@ import './RestaurantsPage.scss';
 
 const RestaurantsPage = (props) => {
     return (
-        <>
+        <div className='restaurants-page'>
             <Header title="Restaurant" description="This is the description" className="restaurant-header" />
             <RestaurantFilterer />
-            <RestaurantCardsSection />
+            <RestaurantCardsSection restaurants={ [0, 1, 2, 3, 4, 5, 6, 7] } />
             <button onClick={ () => props.history.push('/restaurant-details/123456') }>Go to details page</button>
-        </>
+        </div>
     );
 };
 
