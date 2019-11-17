@@ -1,5 +1,6 @@
 const express = require('express');
 const yelp = require('yelp-fusion');
+const path = require('path');
 
 if (!process.env.YELP_API_KEY) {
     console.log('Please set the env var YELP_API_KEY and retry.');
@@ -28,7 +29,10 @@ app.get("/businesses/:businessId", (req, res, next) => sendJson(client.business(
 app.get("/businesses/:businessId/reviews", (req, res, next) => sendJson(client.reviews(req.params.businessId), res));
 
 // Statically serve files from the `dist` folder
-app.use(express.static('dist'));
+app.use(express.static(path.resolve(__dirname, '../dist')));
+
+// All routes get redirected to index.html so React Router can handle it.
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../dist/index.html')));
 
 // 404 Error
 app.use((req, res, next) => res.status(404).send("something went wrong"));

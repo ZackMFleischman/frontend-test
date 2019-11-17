@@ -43,7 +43,8 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         hot: true,
-        open: true
+        open: true,
+        historyApiFallback: true
     },
     performance: {
         hints: false
