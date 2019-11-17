@@ -4,6 +4,7 @@ import filterByUSRestaurantCategories from './fetcherUtils/FilterByUSRestaurantC
 import { transformRawRestaurantData } from './fetcherUtils/TransformRawRestaurantData';
 
 const localServerBaseUrl = 'http://localhost:1234';
+const restaurantsFetchedPerRequest = 5;
 
 class YelpFetcher {
     constructor(baseUrl = localServerBaseUrl, jsonFetcher = new JsonFetcher()) {
@@ -18,7 +19,8 @@ class YelpFetcher {
 
     fetchRestaurants(category, offset = 0) {
         const queryParams = getQueryParameters({
-            category,
+            categories: category,
+            limit: restaurantsFetchedPerRequest.toString(),
             offset: offset.toString(),
             term: 'restaurants',
             location: 'Las Vegas',

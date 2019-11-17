@@ -8,6 +8,10 @@ export const YelpActionTypes = {
     FETCH_RESTAURANTS_START: 'FETCH_RESTAURANTS_START',
     FETCH_RESTAURANTS_SUCCESS: 'FETCH_RESTAURANTS_SUCCESS',
     FETCH_RESTAURANTS_ERROR: 'FETCH_RESTAURANTS_ERROR',
+
+    FETCH_MORE_RESTAURANTS_START: 'FETCH_MORE_RESTAURANTS_START',
+    FETCH_MORE_RESTAURANTS_SUCCESS: 'FETCH_MORE_RESTAURANTS_SUCCESS',
+    FETCH_MORE_RESTAURANTS_ERROR: 'FETCH_MORE_RESTAURANTS_ERROR',
 };
 
 export const fetchCategoriesActionTypes = toFetchActionTypes([
@@ -20,4 +24,10 @@ export const fetchRestaurantsActionTypes = toFetchActionTypes([
     YelpActionTypes.FETCH_RESTAURANTS_START,
     YelpActionTypes.FETCH_RESTAURANTS_SUCCESS,
     YelpActionTypes.FETCH_RESTAURANTS_ERROR
+]);
+
+export const fetchMoreRestaurantsActionTypes = toFetchActionTypes([
+    YelpActionTypes.FETCH_MORE_RESTAURANTS_START,
+    YelpActionTypes.FETCH_MORE_RESTAURANTS_SUCCESS,
+    YelpActionTypes.FETCH_MORE_RESTAURANTS_ERROR
 ]);

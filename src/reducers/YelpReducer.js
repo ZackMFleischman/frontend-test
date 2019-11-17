@@ -1,7 +1,7 @@
-import { getNotLoadedState, getLoadingSuccessState } from './reducerUtils/LoadingStatusStates';
+import { getNotLoadedState } from './reducerUtils/LoadingStatusStates';
 import { YelpActionTypes, fetchCategoriesActionTypes, fetchRestaurantsActionTypes } from '../actions/YelpActionTypes';
 import fetchReducer from './reducerUtils/FetchReducer';
-import { yelpRestaurantsReducer } from './YelpRestaurantsReducer';
+import { yelpFetchMoreRestaurantsReducer } from './YelpFetchMoreRestaurantsReducer';
 
 const initialYelpState = {
     categories: getNotLoadedState(),
@@ -9,6 +9,7 @@ const initialYelpState = {
 };
 
 const yelpCategoriesReducer = (state, action) => fetchReducer(state, action, 'categories', fetchCategoriesActionTypes);
+const yelpFetchRestaurantsReducer = (state, action) => fetchReducer(state, action, 'restaurants', fetchRestaurantsActionTypes);
 
 export const yelpReducer = (state = initialYelpState, action) => {
     switch (action.type) {
@@ -20,7 +21,12 @@ export const yelpReducer = (state = initialYelpState, action) => {
         case YelpActionTypes.FETCH_RESTAURANTS_START:
         case YelpActionTypes.FETCH_RESTAURANTS_SUCCESS:
         case YelpActionTypes.FETCH_RESTAURANTS_ERROR:
-            return yelpRestaurantsReducer(state, action);
+            return yelpFetchRestaurantsReducer(state, action);
+
+        case YelpActionTypes.FETCH_MORE_RESTAURANTS_START:
+        case YelpActionTypes.FETCH_MORE_RESTAURANTS_SUCCESS:
+        case YelpActionTypes.FETCH_MORE_RESTAURANTS_ERROR:
+            return yelpFetchMoreRestaurantsReducer(state, action);
 
         default: return state
     }

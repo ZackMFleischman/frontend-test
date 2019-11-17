@@ -1,9 +1,9 @@
 import { YelpActionTypes } from '../actions/YelpActionTypes';
 import LoadingStatus from './reducerUtils/LoadingStatus';
 
-export const yelpRestaurantsReducer = (state, action) => {
+export const yelpFetchMoreRestaurantsReducer = (state, action) => {
     switch (action.type) {
-        case YelpActionTypes.FETCH_RESTAURANTS_START:
+        case YelpActionTypes.FETCH_MORE_RESTAURANTS_START:
             return {
                 ...state,
                 restaurants: {
@@ -12,7 +12,7 @@ export const yelpRestaurantsReducer = (state, action) => {
                 }
             };
 
-        case YelpActionTypes.FETCH_RESTAURANTS_SUCCESS:
+        case YelpActionTypes.FETCH_MORE_RESTAURANTS_SUCCESS:
             const existingRestaurantMap = state.restaurants.data ? state.restaurants.data.restaurantMap : {};
 
             return {
@@ -29,7 +29,7 @@ export const yelpRestaurantsReducer = (state, action) => {
                 }
             };
 
-        case YelpActionTypes.FETCH_RESTAURANTS_ERROR:
+        case YelpActionTypes.FETCH_MORE_RESTAURANTS_ERROR:
             return {
                 ...state,
                 restaurants: {
