@@ -1,11 +1,12 @@
 import React from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 import Header from '../components/Header';
 import RestaurantFilterer from '../components/RestaurantFilterer';
 import RestaurantCardsSection from '../components/RestaurantCardsSection';
-import withLoader from '../hocs/WithLoader';
+import withLoadingSpinner from '../hocs/WithLoadingSpinner';
 
 import './RestaurantsPage.scss';
 
@@ -20,7 +21,14 @@ const RestaurantsPage = (props) => {
     );
 };
 
+RestaurantsPage.propsTypes = {
+    categories: PropTypes.object,
+    error: PropTypes.object,
+    headerTitle: PropTypes.string,
+    headerDescription: PropTypes.string
+}
+
 export default compose(
-    withLoader,
+    withLoadingSpinner,
     withRouter
 )(RestaurantsPage);

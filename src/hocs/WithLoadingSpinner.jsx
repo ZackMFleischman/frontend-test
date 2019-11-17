@@ -1,8 +1,8 @@
 import React from 'react';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const withLoader = (Component) => {
-    class WithLoader extends React.PureComponent {
+const withLoadingSpinner = (Component) => {
+    class WithLoadingSpinner extends React.PureComponent {
         render() {
             const { isLoading, ...otherProps } = this.props;
             if (isLoading)
@@ -12,9 +12,9 @@ const withLoader = (Component) => {
         }
     }
 
-    WithLoader.displayName = `withLoader(${Component.displayName})`;
+    WithLoadingSpinner.displayName = `withLoadingSpinner(${Component.displayName})`;
 
-    return WithLoader;
+    return WithLoadingSpinner;
 }
 
-export default withLoader;
+export default withLoadingSpinner;

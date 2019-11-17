@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import RestaurantsPage from './RestaurantsPage';
 import { fetchCategories } from '../actions/YelpActions';
 import { isNotLoaded } from '../reducers/reducerUtils/LoadingStatus';
-import { PropTypes } from 'prop-types';
 
 class RestaurantsPageContainer extends React.Component {
     componentDidMount() {
@@ -11,7 +10,6 @@ class RestaurantsPageContainer extends React.Component {
     }
 
     render() {
-        console.log('props: %o', this.props);
         return (
             <RestaurantsPage
                 isLoading={ this.props.isLoading }
@@ -22,12 +20,6 @@ class RestaurantsPageContainer extends React.Component {
             />
         );
     }
-}
-
-RestaurantsPageContainer.propsTypes = {
-    isLoading: PropTypes.bool,
-    categories: PropTypes.object,
-    error: PropTypes.object
 }
 
 const mapStateToProps = (state) => ({
