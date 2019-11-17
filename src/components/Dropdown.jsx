@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import onClickOutside from "react-onclickoutside";
 
 class Dropdown extends React.Component {
     constructor(props) {
@@ -16,6 +17,15 @@ class Dropdown extends React.Component {
             }
         });
     }
+
+    collapseDropdown = () => {
+        if (this.state.isOpen)
+            this.setState({ isOpen: false });
+    }
+
+    handleClickOutside = () => {
+        this.collapseDropdown();
+    };
 
     renderHeader = () => {
         return (
@@ -67,4 +77,4 @@ Dropdown.propTypes = {
     onDropdownItemClicked: PropTypes.func
 };
 
-export default Dropdown;
+export default onClickOutside(Dropdown);
