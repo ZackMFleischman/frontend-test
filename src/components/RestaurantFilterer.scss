@@ -1,0 +1,11 @@
+.restaurant-filterer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: burlywood;
+}
+
+.restaurant-filter-options {
+    display: flex;
+    justify-content: space-evenly;
+}

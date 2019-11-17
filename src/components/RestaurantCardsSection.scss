@@ -1,0 +1,21 @@
+.restaurant-cards-section {
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    align-items: center;
+}
+
+.restaurant-cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: firebrick;
+    justify-content: space-evenly;
+}
+
+.restaurant-card {
+    border: lightblue 2px solid;
+    min-width: 200px;
+    min-height: 200px;
+}
