@@ -27,6 +27,14 @@
         ]
     },
     "jest": {
+        "moduleFileExtensions": [
+            "js",
+            "jsx",
+            "json"
+        ],
+        "transform": {
+            "^.+\\.(js|jsx)?$": "babel-jest"
+        },
         "setupFilesAfterEnv": [
             "<rootDir>src/SetupTests.js"
         ]
@@ -42,6 +50,7 @@
         "@storybook/react": "^5.2.6",
         "@types/react": "^16.9.11",
         "babel-core": "^6.26.3",
+        "babel-jest": "^24.9.0",
         "babel-loader": "^8.0.6",
         "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.7.0",

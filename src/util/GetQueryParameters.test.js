@@ -1,4 +1,3 @@
-
 import { getQueryParameters } from './GetQueryParameters';
 
 describe('getQueryParameters tests', () => {
@@ -14,6 +13,13 @@ describe('getQueryParameters tests', () => {
 
     it('should handle a single key/value pair', () => {
         expect(getQueryParameters({
+            foo: 'bar'
+        })).toBe('?foo=bar');
+    });
+
+    it('should ignore keys with undefined values', () => {
+        expect(getQueryParameters({
+            key: undefined,
             foo: 'bar'
         })).toBe('?foo=bar');
     });

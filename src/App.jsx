@@ -1,11 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
-import fetch from 'isomorphic-fetch';
 
 import './App.scss';
 import RestaurantsPage from './pages/RestaurantsPage';
 import RestaurantDetailsPage from './pages/RestaurantDetailsPage';
-import YelpFetcher from './yelp/YelpFetcher';
+import { createYelpFetcher } from './fetchers/YelpFetcherFactory';
 
 const App = () => {
     return (
@@ -26,8 +25,7 @@ const App = () => {
 };
 
 
-const baseUrl = process.env.SERVER_URL;
-const fetcher = new YelpFetcher(baseUrl);
+const fetcher = createYelpFetcher();
 fetcher.fetchCategories()
     .then(categories => {
         console.log('printing categories:');
