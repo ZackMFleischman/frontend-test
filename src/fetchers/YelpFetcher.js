@@ -4,7 +4,7 @@ import filterByUSRestaurantCategories from './fetcherUtils/FilterByUSRestaurantC
 import { transformRawRestaurantData } from './fetcherUtils/TransformRawRestaurantData';
 
 const localServerBaseUrl = 'http://localhost:1234';
-const restaurantsFetchedPerRequest = 5;
+const restaurantsFetchedPerRequest = 8; // Limit
 
 class YelpFetcher {
     constructor(baseUrl = localServerBaseUrl, jsonFetcher = new JsonFetcher()) {

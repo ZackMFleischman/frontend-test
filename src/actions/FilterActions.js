@@ -5,7 +5,6 @@ import { fetchRestaurants } from './YelpActions';
 
 export const changeSelectedPrice = (price) => toAction(FilterActionTypes.CHANGE_SELECTED_PRICE, price);
 export const toggleShowOpenNow = () => toAction(FilterActionTypes.TOGGLE_SHOW_OPEN_NOW);
-export const clearAllFilters = () => toAction(FilterActionTypes.CLEAR_ALL_FILTERS);
 
 export const changeSelectedCategory = (categoryAlias) => (dispatch, getState) => {
     const currentCategory = getCategoryFromFilter(getState());
@@ -14,3 +13,8 @@ export const changeSelectedCategory = (categoryAlias) => (dispatch, getState) =>
         dispatch(fetchRestaurants());
     }
 };
+
+export const clearAllFilters = () => (dispatch) => {
+    dispatch(toAction(FilterActionTypes.CLEAR_ALL_FILTERS));
+    dispatch(fetchRestaurants());
+} 

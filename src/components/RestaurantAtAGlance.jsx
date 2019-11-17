@@ -26,7 +26,7 @@ RestaurantAtAGlance.propTypes = {
     name: PropTypes.string,
     stars: PropTypes.number,
     category: PropTypes.string,
-    price: PropTypes.number,
+    price: PropTypes.string,
     isOpen: PropTypes.bool
 };
 

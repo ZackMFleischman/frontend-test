@@ -5,16 +5,26 @@ import './RestaurantCardsSection.scss';
 import RestaurantCard from './RestaurantCard';
 
 class RestaurantCardsSection extends React.PureComponent {
-    renderRestaurantCard = restaurantData => (
-        <RestaurantCard
-            key={ restaurantData }
-            data={ restaurantData }
-        />
-    );
+    renderRestaurantCard = restaurant => {
+        console.log(`Restaurant Data for ${restaurant.name}: %o`, restaurant);
+        return (
+            <RestaurantCard
+                key={ restaurant.alias }
+                name={ restaurant.name }
+                stars={ restaurant.rating }
+                category={ restaurant.categories[0].title }
+                price={ restaurant.price }
+                isOpen={ !restaurant.is_closed }
+                imageUrl={ restaurant.image_url }
+            />
+        );
+    }
 
     renderRestaurantCards = restaurants => {
-        if (restaurants)
+        if (restaurants) {
+            console.log('rendering cards: %o', restaurants);
             return restaurants.map(this.renderRestaurantCard);
+        }
         else
             return <span>No Restaurants Available</span>;
     };
@@ -25,14 +35,9 @@ class RestaurantCardsSection extends React.PureComponent {
         </div>
     );
 
-    handleLoadMoreClicked = () => {
-        console.log('clicked load more');
-        this.props.onLoadMoreClicked();
-    }
-
     loadMoreButton = (
         <div>
-            <button style={ { width: '200px' } } onClick={ this.handleLoadMoreClicked }>Load More</button>
+            <button style={ { width: '200px' } } onClick={ () => this.props.onLoadMoreClicked() }>Load More</button>
         </div>
     );
 

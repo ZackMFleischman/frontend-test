@@ -11,3 +11,10 @@ export const getCurrentRestaurantOffset = (state) => {
     else
         return 0;
 }
+
+export const getRestaurantsAsArray = (state) => {
+    if (state.yelp.restaurants.data)
+        return Object.values(state.yelp.restaurants.data.restaurantMap);
+    else
+        return [];
+}
