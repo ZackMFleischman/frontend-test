@@ -2,17 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RestaurantsPage from './RestaurantsPage';
 import { fetchCategories } from '../actions/YelpActions';
-import { isNotLoaded } from '../reducers/reducerUtils/LoadingStatus';
+import { haveNotFinishedLoading, shouldLoad } from '../reducers/reducerUtils/LoadingStatus';
 
 class RestaurantsPageContainer extends React.Component {
     componentDidMount() {
-        this.props.fetchCategories();
+        if (shouldLoad(this.props.categoriesLoadingStatus))
+            this.props.fetchCategories();
     }
 
     render() {
+        const isLoading = haveNotFinishedLoading(this.props.categoriesLoadingStatus)
+
         return (
             <RestaurantsPage
-                isLoading={ this.props.isLoading }
+                isLoading={ isLoading }
                 categories={ this.props.categories }
                 error={ this.props.error }
                 headerTitle={ this.props.headerTitle }
@@ -23,8 +26,8 @@ class RestaurantsPageContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    isLoading: isNotLoaded(state.yelp.categories),
     categories: state.yelp.categories.data,
+    categoriesLoadingStatus: state.yelp.categories.loadingStatus,
     error: state.yelp.categories.error,
     headerTitle: state.copy.header.title,
     headerDescription: state.copy.header.description

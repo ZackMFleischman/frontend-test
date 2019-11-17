@@ -12,7 +12,7 @@ describe('YelpFetcher tests', () => {
     it('fetchCategories should fetch the right url', async () => {
         console.log("Environment Vars: %o", process.env);
         const expectedUrl = getExpectedUrl('/categories');
-        await yelpFetcher.fetchCategories();
+        await yelpFetcher.fetchAmericanRestaurantCategories();
         expect(fetchJson).toHaveBeenCalledWith(expectedUrl);
     });
 

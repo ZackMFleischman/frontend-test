@@ -5,7 +5,9 @@ const LoadingStatus = {
     LOADING_ERROR: 'LOADING_ERROR',
 };
 
-export const isNotLoaded = (loadingStatus) => loadingStatus === LoadingStatus.NOT_LOADED || loadingStatus === LoadingStatus.LOADING;
+export const notLoaded = (loadingStatus) => loadingStatus === LoadingStatus.NOT_LOADED;
+export const haveNotFinishedLoading = (loadingStatus) => loadingStatus === LoadingStatus.NOT_LOADED || loadingStatus === LoadingStatus.LOADING;
 export const couldntLoad = (loadingStatus) => loadingStatus === LoadingStatus.LOADING_ERROR;
+export const shouldLoad = (loadingStatus) => loadingStatus === LoadingStatus.NOT_LOADED || loadingStatus === LoadingStatus.LOADING_ERROR;
 
 export default LoadingStatus;
