@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dropdown from './Dropdown';
+import Dropdown from '../atoms/Dropdown';
 
 const PriceFilter = (props) => {
     const handlePriceItemClicked = (price) => props.changeSelectedPrice(price.id);

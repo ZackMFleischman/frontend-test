@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleShowOpenNow } from '../actions/FilterActions';
+import { toggleShowOpenNow } from '../../actions/FilterActions';
 import OpenNowFilter from './OpenNowFilter';
 
 const OpenNowFilterContainer = ({ isSelected, toggleShowOpenNow }) => {

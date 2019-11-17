@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CategoryFilter from './CategoryFilter';
-import { changeSelectedCategory } from '../actions/FilterActions';
-import { getCategoriesToDisplay } from '../selectors/FilterSelectors';
+import { changeSelectedCategory } from '../../actions/FilterActions';
+import { getCategoriesToDisplay } from '../../selectors/FilterSelectors';
 
 class CategoryFilterContainer extends React.PureComponent {
     render() {

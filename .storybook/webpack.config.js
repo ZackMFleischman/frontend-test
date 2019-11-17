@@ -12,7 +12,21 @@ module.exports = {
   ],
   module: {
     rules: [
-      // add your custom rules.
+        {
+            // Javascript transpilation
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: ['babel-loader']
+        },
+        {
+            // Sass transpilation
+            test: /\.(scss|sass|css)$/,
+            use: [
+                'style-loader', // Creates `style` nodes from JS strings
+                'css-loader', // Translates CSS into CommonJS
+                'sass-loader' // Compiles Sass to CSS
+            ],
+        },
     ],
   },
 };

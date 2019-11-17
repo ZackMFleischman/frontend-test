@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 import RestaurantAtAGlance from '../components/RestaurantAtAGlance';
-import Stars from '../components/Stars';
+import Stars from '../components/atoms/Stars';
 
 const RestaurantReview = (props) => {
     return (

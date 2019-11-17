@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './RestaurantAtAGlance.scss';
-import Stars from './Stars';
+import Stars from './atoms/Stars';
 import OpenIndicator from './OpenIndicator';
 
 const RestaurantAtAGlance = (props) => {

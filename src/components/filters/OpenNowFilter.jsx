@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioButton from './RadioButton';
+import RadioButton from '../atoms/RadioButton';
 
 const OpenNowFilter = (props) => {
     return (

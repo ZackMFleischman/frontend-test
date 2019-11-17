@@ -3,8 +3,8 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
-import Header from '../components/Header';
-import RestaurantFilters from '../components/RestaurantFilters';
+import Header from '../components/atoms/Header';
+import RestaurantFilters from '../components/filters/RestaurantFilters';
 import RestaurantCardsSection from '../components/RestaurantCardsSection';
 import withLoadingSpinner from '../hocs/WithLoadingSpinner';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dropdown from './Dropdown';
+import Dropdown from '../atoms/Dropdown';
 
 const CategoryFilter = (props) => {
     const handleCategoryItemClicked = (category) => props.changeSelectedCategory(category.id);

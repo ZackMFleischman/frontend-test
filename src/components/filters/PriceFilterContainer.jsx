@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeSelectedPrice } from '../actions/FilterActions';
+import { changeSelectedPrice } from '../../actions/FilterActions';
 import PriceFilter from './PriceFilter';
 
 class PriceFilterContainer extends React.PureComponent {
