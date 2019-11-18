@@ -1,4 +1,8 @@
 import YelpFetcher from './YelpFetcher';
+import { isProd } from '../Environment';
 
-// This will be mocked out for integration tests.
-export const getYelpFetcher = () => new YelpFetcher(process.env.SERVER_URL);
+let serverUrl = isProd()
+    ? 'https://zacks-superformula-interview.herokuapp.com'
+    : 'http://localhost:1234';
+
+export const getYelpFetcher = () => new YelpFetcher(serverUrl);
