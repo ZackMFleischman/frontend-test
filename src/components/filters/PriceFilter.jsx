@@ -18,6 +18,7 @@ const PriceFilter = (props) => {
             title='Price'
             onDropdownItemClicked={ handlePriceItemClicked }
             items={ getPriceItems() }
+            sizeSmall
         />
     );
 };

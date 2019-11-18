@@ -7,13 +7,21 @@ import OpenNowFilterContainer from './OpenNowFilterContainer';
 import ClearAllFiltersButton from './ClearAllFiltersButton';
 
 const RestaurantFilters = (props) => {
+    const FilterItem = ({ render }) => {
+        return (
+            <div className='restaurant-filter-item'>
+                { render() }
+            </div>
+        );
+    }
+
     return (
         <div className='restaurant-filter-wrapper'>
             <div className='restaurant-filter-options'>
-                <span>Filter By:  </span>
-                <OpenNowFilterContainer />
-                <PriceFilterContainer />
-                <CategoryFilterContainer />
+                <FilterItem render={ () => <div className='restaurant-filter-by'>Filter By:</div> } />
+                <FilterItem render={ () => <OpenNowFilterContainer /> } />
+                <FilterItem render={ () => <PriceFilterContainer /> } />
+                <FilterItem render={ () => <CategoryFilterContainer /> } />
             </div>
             <ClearAllFiltersButton />
         </div>

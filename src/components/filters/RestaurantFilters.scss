@@ -2,10 +2,23 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: burlywood;
+    align-items: center;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.restaurant-filter-by {
+    color: #4D4D4D;
 }
 
 .restaurant-filter-options {
     display: flex;
     justify-content: space-evenly;
+}
+
+.restaurant-filter-item {
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
 }
