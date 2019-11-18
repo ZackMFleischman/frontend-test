@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Shapiro';
+    src: url("./assets/fonts/Shapiro-35FeatherText.woff") format("woff"), 
+         url("./assets/fonts/Shapiro-35FeatherText.ttf")  format("truetype");
+}
+
+body {
+    font-family: 'Shapiro';
+}

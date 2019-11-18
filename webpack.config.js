@@ -22,6 +22,11 @@ module.exports = {
                     'sass-loader' // Compiles Sass to CSS
                 ],
             },
+            {
+                // Fonts and Images
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000'
+            }
         ]
     },
     resolve: {

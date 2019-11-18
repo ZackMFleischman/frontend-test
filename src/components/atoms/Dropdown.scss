@@ -4,8 +4,15 @@
 // }
 // .dropdown-chevron {
 // }
-// .dropdown-item-list {
-// }
+
+.dropdown-item-list {
+    background-color: white;
+    border: 1px solid #BCBCBC;
+    position: absolute;
+    overflow-y: scroll;
+    max-height: 250px;
+    box-shadow: 0px 4px 4px #BCBCBC;
+}
 
 // .dropdown-list-item {
 // }
