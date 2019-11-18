@@ -3,18 +3,19 @@ import Stars from '../components/atoms/Stars';
 import { PropTypes } from 'prop-types';
 
 const RestaurantReview = (props) => {
+    const { user, text, rating, time_created } = props.review;
     return (
         <>
             { props.useSeparator && <hr /> }
             <div>
-                <span>[Image]</span>
+                <img style={ { maxHeight: '100px' } } src={ user.image_url } alt='Reviewer Image'></img>
                 <div style={ { display: 'flex', flexDirection: 'column' } }>
-                    <span>Name</span>
-                    <span>Date</span>
+                    <span>{ user.name }</span>
+                    <span>{ time_created }</span>
                 </div>
                 <div>
-                    <Stars numStars={ 3 } />
-                    <p>this is the review text, this is the review text, this is the review text, this is the review text, this is the review text, this is the review text, this is the review text, this is the review text</p>
+                    <Stars numStars={ rating } />
+                    <p>{ text }</p>
                 </div>
             </div>
         </>
