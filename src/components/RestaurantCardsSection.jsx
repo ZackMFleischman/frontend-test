@@ -42,7 +42,7 @@ class RestaurantCardsSection extends React.PureComponent {
     render() {
         return (
             <div className='restaurant-cards-section' >
-                <h2>All Restaurants</h2>
+                <h2>{ this.props.title }</h2>
                 { this.renderCardsContainer() }
                 { this.loadMoreButton }
             </div>
@@ -51,6 +51,8 @@ class RestaurantCardsSection extends React.PureComponent {
 }
 
 RestaurantCardsSection.propTypes = {
+    title: PropTypes.string,
+    restaurants: PropTypes.array,
     onLoadMoreClicked: PropTypes.func
 }
 

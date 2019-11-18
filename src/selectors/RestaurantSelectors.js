@@ -14,6 +14,13 @@ export const getCurrentRestaurantCategory = (state) => {
         return undefined;
 }
 
+export const getCurrentRestaurantCategoryDisplayText = (state) => {
+    const currentCategory = getCurrentRestaurantCategory(state);
+    if (!currentCategory || !state.yelp.categories.data || currentCategory === 'all') return 'All Restaurants';
+    const categoryData = state.yelp.categories.data.find(category => category.alias === currentCategory);
+    return categoryData.title + ' Restaurants';
+}
+
 export const getCurrentRestaurantOffset = (state) => {
     if (state.yelp.restaurants.data)
         return state.yelp.restaurants.data.currentOffsetForCategory

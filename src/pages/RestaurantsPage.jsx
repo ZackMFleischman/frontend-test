@@ -16,7 +16,6 @@ const RestaurantsPage = (props) => {
             <Header title={ props.headerTitle } description={ props.headerDescription } className="restaurant-header" />
             <RestaurantFilters />
             <RestaurantCardsSectionContainer />
-            <button onClick={ () => props.history.push('/restaurant-details/123456') }>Go to details page</button>
         </div>
     );
 };
@@ -28,7 +27,4 @@ RestaurantsPage.propsTypes = {
     headerDescription: PropTypes.string
 }
 
-export default compose(
-    withLoadingSpinner,
-    withRouter
-)(RestaurantsPage);
+export default withLoadingSpinner(RestaurantsPage);
