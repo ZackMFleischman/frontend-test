@@ -14,7 +14,10 @@ class RestaurantsPageContainer extends React.Component {
     }
 
     render() {
-        const isLoading = haveNotFinishedLoading(this.props.categoriesLoadingStatus)
+        const isLoading = (
+            haveNotFinishedLoading(this.props.categoriesLoadingStatus) &&
+            haveNotFinishedLoading(this.props.restaurantsLoadingStatus)
+        );
 
         return (
             <RestaurantsPage

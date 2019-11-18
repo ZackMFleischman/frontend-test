@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 import RestaurantAtAGlance from '../components/RestaurantAtAGlance';
 import Stars from '../components/atoms/Stars';
+import { PropTypes } from 'prop-types';
+import withLoadingSpinner from '../hocs/WithLoadingSpinner';
 
 const RestaurantReview = (props) => {
     return (
@@ -42,16 +44,25 @@ const RestaurantReviews = (props) => {
 }
 
 const RestaurantDetailsPage = (props) => {
-    const { restaurantId } = useParams();
-
     return (
         <div className='restaurant-details-page'>
-            <RestaurantAtAGlance id={ restaurantId } />
+            <RestaurantAtAGlance
+                name={ props.restaurant.name }
+                stars={ props.restaurant.rating }
+                category={ props.restaurant.categories[0].title }
+                price={ props.restaurant.price }
+                isOpen={ !props.restaurant.is_closed }
+            />
             <hr />
             <RestaurantReviews reviews={ [0, 1, 2, 3, 4] } />
-            <button onClick={ () => props.history.push('/') }>Go to main page</button>
+            <button onClick={ () => props.goToMainPage() }>Go to main page</button>
         </div>
     );
 };
 
-export default withRouter(RestaurantDetailsPage);
+RestaurantDetailsPage.propTypes = {
+    goToMainPage: PropTypes.func,
+    restaurant: PropTypes.object
+}
+
+export default withLoadingSpinner(RestaurantDetailsPage);

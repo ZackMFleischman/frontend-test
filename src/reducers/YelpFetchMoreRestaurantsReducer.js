@@ -20,6 +20,7 @@ export const yelpFetchMoreRestaurantsReducer = (state, action) => {
                 restaurants: {
                     loadingStatus: LoadingStatus.LOADED_SUCCESSFULLY,
                     data: {
+                        ...state.restaurants.data,
                         ...action.payload,
                         restaurantMap: {
                             ...existingRestaurantMap,

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import RestaurantDetailsPage from './pages/RestaurantDetailsPage';
 import './App.scss';
 import RestaurantsPageContainer from './pages/RestaurantsPageContainer';
+import RestaurantDetailsPageContainer from './pages/RestaurantDetailsPageContainer';
 
 const App = () => {
     return (
@@ -13,8 +13,8 @@ const App = () => {
                         <RestaurantsPageContainer />
                     </Route>
 
-                    <Route path="/restaurant-details/:restaurantId">
-                        <RestaurantDetailsPage />
+                    <Route path="/restaurant-details/:restaurantAlias">
+                        <RestaurantDetailsPageContainer />
                     </Route>
                 </Switch>
             </Router>

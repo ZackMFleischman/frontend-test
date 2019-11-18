@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 
 import './RestaurantCardsSection.scss';
 import RestaurantAtAGlance from './RestaurantAtAGlance';
+import { withRouter } from 'react-router-dom';
+
+const LearnMoreButton = (props) => {
+    return <button onClick={ () => props.navigateToDetailsPage() }>LEARN MORE</button>;
+};
 
 const RestaurantCard = (props) => {
+    const navigateToDetailsPage = () => props.history.push(`/restaurant-details/${props.alias}`);
+
     return (
         <div className='restaurant-card'>
             <img style={ { maxHeight: '200px' } } src={ props.imageUrl } alt='Restaurant Image' />
@@ -15,11 +22,15 @@ const RestaurantCard = (props) => {
                 price={ props.price }
                 isOpen={ props.isOpen }
             />
+            <LearnMoreButton
+                navigateToDetailsPage={ navigateToDetailsPage }
+            />
         </div>
     );
 };
 
 RestaurantCard.propTypes = {
+    alias: PropTypes.string,
     name: PropTypes.string,
     stars: PropTypes.number,
     category: PropTypes.string,
@@ -28,4 +39,4 @@ RestaurantCard.propTypes = {
     imageUrl: PropTypes.string
 }
 
-export default RestaurantCard;
+export default withRouter(RestaurantCard);

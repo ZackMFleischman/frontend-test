@@ -1,7 +1,7 @@
 import { getQueryParameters } from '../util/GetQueryParameters';
 import JsonFetcher from './JsonFetcher';
 import filterByUSRestaurantCategories from './fetcherUtils/FilterByUSRestaurantCategories';
-import { transformRawRestaurantData } from './fetcherUtils/TransformRawRestaurantData';
+import { transformRawRestaurantsData, transformRawRestaurantData } from './fetcherUtils/TransformRawRestaurantData';
 
 const localServerBaseUrl = 'http://localhost:1234';
 const restaurantsFetchedPerRequest = 8; // Limit
@@ -27,12 +27,13 @@ class YelpFetcher {
         });
 
         return this.fetchJson(`${this.baseUrl}/businesses/search${queryParams}`)
-            .then(rawRestaurantData => transformRawRestaurantData(rawRestaurantData, category, offset));
+            .then(rawRestaurantsData => transformRawRestaurantsData(rawRestaurantsData, category, offset));
     }
 
     fetchRestaurant(restaurantId) {
         if (restaurantId)
-            return this.fetchJson(`${this.baseUrl}/businesses/${restaurantId}`);
+            return this.fetchJson(`${this.baseUrl}/businesses/${restaurantId}`)
+                .then(rawRestaurantData => transformRawRestaurantData(rawRestaurantData));
         else
             return Promise.reject(new Error('fetchRestaurant: Invalid restaurantId!'));
     }

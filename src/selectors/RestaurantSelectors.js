@@ -1,5 +1,12 @@
 import { getOnlyShowOpenNow, getPriceFilter } from "./FilterSelectors";
 
+export const getRestaurantMap = (state) => {
+    if (state.yelp.restaurants.data)
+        return state.yelp.restaurants.data.restaurantMap;
+    else
+        return {};
+}
+
 export const getCurrentRestaurantCategory = (state) => {
     if (state.yelp.restaurants.data)
         return state.yelp.restaurants.data.currentCategory;

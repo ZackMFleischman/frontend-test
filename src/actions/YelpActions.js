@@ -21,6 +21,14 @@ export const fetchRestaurants = () => (dispatch, getState) => {
     );
 };
 
+export const fetchRestaurant = (restaurantIdOrAlias) => (dispatch) => {
+    return fetchData(
+        () => getYelpFetcher().fetchRestaurant(restaurantIdOrAlias),
+        fetchMoreRestaurantsActionTypes,
+        dispatch
+    );
+};
+
 export const fetchMoreRestaurants = () => (dispatch, getState) => {
     const state = getState();
     const categoryToFetch = getCategoryFilter(state);

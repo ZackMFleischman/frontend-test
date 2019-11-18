@@ -10,6 +10,7 @@ class RestaurantCardsSection extends React.PureComponent {
         return (
             <RestaurantCard
                 key={ restaurant.alias }
+                alias={ restaurant.alias }
                 name={ restaurant.name }
                 stars={ restaurant.rating }
                 category={ restaurant.categories[0].title }

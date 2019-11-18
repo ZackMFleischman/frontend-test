@@ -1,5 +1,5 @@
-export const transformRawRestaurantData = (rawRestaurantData, category, offset) => {
-    const restaurantsArray = rawRestaurantData.businesses;
+export const transformRawRestaurantsData = (rawRestaurantsData, category, offset) => {
+    const restaurantsArray = rawRestaurantsData.businesses;
     const numRestaurantsFetched = restaurantsArray.length;
     const restaurantMap = restaurantArrayToMap(restaurantsArray);
 
@@ -7,6 +7,14 @@ export const transformRawRestaurantData = (rawRestaurantData, category, offset) 
         currentOffsetForCategory: offset + numRestaurantsFetched,
         currentCategory: category,
         restaurantMap
+    };
+};
+
+export const transformRawRestaurantData = (rawRestaurantData) => {
+    return {
+        restaurantMap: {
+            [rawRestaurantData.alias]: rawRestaurantData
+        }
     };
 };
 
