@@ -6,7 +6,6 @@ import RestaurantCard from './RestaurantCard';
 
 class RestaurantCardsSection extends React.PureComponent {
     renderRestaurantCard = restaurant => {
-        console.log(`Restaurant Data for ${restaurant.name}: %o`, restaurant);
         return (
             <RestaurantCard
                 key={ restaurant.alias }
@@ -22,10 +21,8 @@ class RestaurantCardsSection extends React.PureComponent {
     }
 
     renderRestaurantCards = restaurants => {
-        if (restaurants) {
-            console.log('rendering cards: %o', restaurants);
+        if (restaurants)
             return restaurants.map(this.renderRestaurantCard);
-        }
         else
             return <span>No Restaurants Available</span>;
     };

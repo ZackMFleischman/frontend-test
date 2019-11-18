@@ -40,7 +40,8 @@ class YelpFetcher {
 
     fetchRestaurantReviews(restaurantId) {
         if (restaurantId)
-            return this.fetchJson(`${this.baseUrl}/businesses/${restaurantId}/reviews`);
+            return this.fetchJson(`${this.baseUrl}/businesses/${restaurantId}/reviews`)
+                .then(rawReviewsData => ({ [restaurantId]: rawReviewsData }));
         else
             return Promise.reject(new Error('fetchRestaurantReviews: Invalid restaurantId!'));
     }

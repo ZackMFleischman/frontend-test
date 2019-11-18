@@ -4,6 +4,7 @@ import RestaurantAtAGlance from '../components/RestaurantAtAGlance';
 import Stars from '../components/atoms/Stars';
 import { PropTypes } from 'prop-types';
 import withLoadingSpinner from '../hocs/WithLoadingSpinner';
+import RestaurantReviewsContainer from '../components/RestaurantReviewsContainer';
 
 const RestaurantReview = (props) => {
     return (
@@ -34,15 +35,6 @@ const RestaurantReviewList = (props) => {
     ));
 }
 
-const RestaurantReviews = (props) => {
-    return (
-        <div>
-            <span>{ props.numReviews } Reviews</span>
-            <RestaurantReviewList reviews={ props.reviews } />
-        </div>
-    );
-}
-
 const RestaurantDetailsPage = (props) => {
     return (
         <div className='restaurant-details-page'>
@@ -54,7 +46,7 @@ const RestaurantDetailsPage = (props) => {
                 isOpen={ !props.restaurant.is_closed }
             />
             <hr />
-            <RestaurantReviews reviews={ [0, 1, 2, 3, 4] } />
+            <RestaurantReviewsContainer restaurantAlias={ props.restaurant.alias } reviews={ [0, 1, 2, 3, 4] } />
             <button onClick={ () => props.goToMainPage() }>Go to main page</button>
         </div>
     );
