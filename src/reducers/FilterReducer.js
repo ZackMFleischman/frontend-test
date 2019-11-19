@@ -5,7 +5,7 @@ export const FilterActionTypes = {
     CLEAR_ALL_FILTERS: 'CLEAR_ALL_FILTERS'
 };
 
-const initialFilterState = {
+export const initialFilterState = {
     selectedCategory: 'all',
     selectedPrice: 'all',
     onlyShowOpenNow: false

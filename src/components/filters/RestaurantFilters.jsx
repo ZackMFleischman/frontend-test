@@ -3,7 +3,7 @@ import React from 'react';
 import CategoryFilterContainer from './CategoryFilterContainer';
 import PriceFilterContainer from './PriceFilterContainer';
 import OpenNowFilterContainer from './OpenNowFilterContainer';
-import ClearAllFiltersButton from './ClearAllFiltersButton';
+import ClearAllFiltersButtonContainer from './ClearAllFiltersButtonContainer';
 import './RestaurantFilters.scss';
 
 const RestaurantFilters = () => {
@@ -22,7 +22,7 @@ const RestaurantFilters = () => {
                 <FilterItem render={ () => <PriceFilterContainer /> } />
                 <FilterItem render={ () => <CategoryFilterContainer /> } />
             </div>
-            <ClearAllFiltersButton />
+            <ClearAllFiltersButtonContainer />
         </div>
     );
 
