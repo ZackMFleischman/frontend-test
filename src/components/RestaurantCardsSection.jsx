@@ -29,7 +29,7 @@ class RestaurantCardsSection extends React.PureComponent {
         if (this.areThereAnyRestaurants())
             return this.props.restaurants.map(this.renderRestaurantCard);
         else
-            return <div>No Restaurants Available</div>;
+            return <div style={ { paddingTop: '1em' } }>No Restaurants Available</div>;
     };
 
     haveRestaurantsLoaded = () => !haveNotFinishedLoading(this.props.restaurantsLoadingStatus);

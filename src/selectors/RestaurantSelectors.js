@@ -1,4 +1,5 @@
 import { getOnlyShowOpenNow, getPriceFilter } from "./FilterSelectors";
+import { loadingFinished } from '../reducers/reducerUtils/LoadingStatus';
 
 export const getRestaurantMap = (state) => {
     if (state.yelp.restaurants.data)
@@ -8,17 +9,21 @@ export const getRestaurantMap = (state) => {
 }
 
 export const getCurrentRestaurantCategory = (state) => {
-    if (state.yelp.restaurants.data)
-        return state.yelp.restaurants.data.currentCategory;
-    else
-        return undefined;
+    return state.filters && state.filters.selectedCategory;
 }
+
+const categoriesNotLoaded = (state) => !loadingFinished(state.yelp.categories.loadingStatus);
 
 export const getCurrentRestaurantCategoryDisplayText = (state) => {
     const currentCategory = getCurrentRestaurantCategory(state);
-    if (!currentCategory || !state.yelp.categories.data || currentCategory === 'all') return 'All Restaurants';
-    const categoryData = state.yelp.categories.data.find(category => category.alias === currentCategory);
-    return categoryData.title + ' Restaurants';
+    console.log('categories not loaded ' + categoriesNotLoaded(state));
+    console.log('currentCat: ' + currentCategory);
+    if (categoriesNotLoaded(state) || !currentCategory || currentCategory === 'all') {
+        return 'All Restaurants';
+    } else {
+        const categoryData = state.yelp.categories.data.find(category => category.alias === currentCategory);
+        return categoryData.title + ' Restaurants';
+    }
 }
 
 export const getCurrentRestaurantOffset = (state) => {

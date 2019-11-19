@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types';
 
 import Header from '../components/atoms/Header';
 import RestaurantFilters from '../components/filters/RestaurantFilters';
-import withLoadingSpinner from '../hocs/WithLoadingSpinner';
 import RestaurantCardsSectionContainer from '../components/RestaurantCardsSectionContainer';
 
 import './RestaurantsPage.scss';
