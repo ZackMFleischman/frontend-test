@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import onClickOutside from 'react-onclickoutside';
 import combineClasses from '../../util/CombineClasses';
 import './Dropdown.scss';
+import LoadingSpinner from './LoadingSpinner';
 
 class Dropdown extends React.Component {
     constructor(props) {
@@ -56,7 +57,7 @@ class Dropdown extends React.Component {
                 { this.renderChevron() }
             </div>
         );
-    };
+    }
 
     renderItemList = () => {
         const itemListClassName = combineClasses([
@@ -67,10 +68,16 @@ class Dropdown extends React.Component {
 
         return (
             <div className={ itemListClassName }>
-                { this.props.items.map(this.renderItem) }
+                { this.renderItemListContent() }
             </div>
         );
     };
+
+    renderItemListContent = () => {
+        return !this.props.isLoading
+            ? this.props.items.map(this.renderItem)
+            : <LoadingSpinner small />
+    }
 
     renderItem = (item) => {
         return (
@@ -96,6 +103,7 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
+    isLoading: PropTypes.bool,
     title: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string,

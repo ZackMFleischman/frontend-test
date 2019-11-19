@@ -14,6 +14,7 @@ const Button = (props) => {
         <button
             className={ buttonClass }
             onClick={ props.onClick }
+            disabled={ props.disabled }
         >
             { props.text }
         </button>
@@ -22,9 +23,15 @@ const Button = (props) => {
 
 Button.propTypes = {
     text: PropTypes.string,
+    disabled: PropTypes.bool,
     className: PropTypes.string,
     onClick: PropTypes.func,
     large: PropTypes.bool,
+};
+
+Button.defaultProps = {
+    disabled: false,
+    large: false
 };
 
 export default Button;

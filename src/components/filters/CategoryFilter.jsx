@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Dropdown from '../atoms/Dropdown';
+import { loadingFinished } from '../../reducers/reducerUtils/LoadingStatus';
 
 const CategoryFilter = (props) => {
     const handleCategoryItemClicked = (category) => props.changeSelectedCategory(category.id);
@@ -18,11 +19,13 @@ const CategoryFilter = (props) => {
             title='Categories'
             onDropdownItemClicked={ handleCategoryItemClicked }
             items={ getCategoryItems() }
+            isLoading={ !loadingFinished(props.categoriesLoadingStatus) }
         />
     );
 };
 
 CategoryFilter.propTypes = {
+    categoriesLoadingStatus: PropTypes.string,
     categories: PropTypes.arrayOf(PropTypes.shape({
         alias: PropTypes.string,
         title: PropTypes.string,

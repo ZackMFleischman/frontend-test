@@ -9,19 +9,19 @@ import RestaurantCardsSectionContainer from '../components/RestaurantCardsSectio
 import './RestaurantsPage.scss';
 
 const RestaurantsPage = (props) => {
-    const renderHeader = () => {
+    const RestaurantHeader = () => {
         return (
             <Header
                 className='restaurant-header'
-                title={ props.headerTitle }
-                description={ props.headerDescription }
+                title={ props.headerCopy.title }
+                description={ props.headerCopy.description }
             />
         );
     };
 
     return (
         <div className='restaurants-page'>
-            { renderHeader() }
+            <RestaurantHeader />
             <RestaurantFilters />
             <RestaurantCardsSectionContainer />
         </div>
@@ -29,11 +29,12 @@ const RestaurantsPage = (props) => {
 };
 
 RestaurantsPage.propTypes = {
-    headerTitle: PropTypes.string,
-    headerDescription: PropTypes.string,
-    categories: PropTypes.object,
+    headerCopy: PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string
+    }),
     error: PropTypes.object,
 }
 
 
-export default withLoadingSpinner(RestaurantsPage);
+export default RestaurantsPage;

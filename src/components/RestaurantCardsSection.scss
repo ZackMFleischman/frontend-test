@@ -1,3 +1,5 @@
+@import 'atoms/FadeIn';
+
 .restaurant-cards-section {
     display: flex;
     flex-direction: column;
@@ -13,6 +15,7 @@
 }
 
 .restaurant-card {
+    @extend .fade-in;
     border: lightblue 2px solid;
     min-width: 200px;
     min-height: 200px;

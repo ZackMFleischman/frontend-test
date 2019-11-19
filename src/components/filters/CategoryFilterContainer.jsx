@@ -4,19 +4,12 @@ import CategoryFilter from './CategoryFilter';
 import { changeSelectedCategory } from '../../actions/FilterActions';
 import { getCategoriesToDisplay } from '../../selectors/FilterSelectors';
 
-class CategoryFilterContainer extends React.PureComponent {
-    render() {
-        return (
-            <CategoryFilter
-                categories={ this.props.categories }
-                selectedCategory={ this.props.selectedCategory }
-                changeSelectedCategory={ this.props.changeSelectedCategory }
-            />
-        );
-    }
-}
+const CategoryFilterContainer = (props) => {
+    return <CategoryFilter { ...props } />;
+};
 
 const mapStateToProps = (state) => ({
+    categoriesLoadingStatus: state.yelp.categories.loadingStatus,
     categories: getCategoriesToDisplay(state),
     selectedCategory: state.filters.selectedCategory
 });

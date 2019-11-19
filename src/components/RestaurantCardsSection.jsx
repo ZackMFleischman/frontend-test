@@ -4,39 +4,51 @@ import PropTypes from 'prop-types';
 import './RestaurantCardsSection.scss';
 import RestaurantCard from './RestaurantCard';
 import Button from './atoms/Button';
+import { haveNotFinishedLoading } from '../reducers/reducerUtils/LoadingStatus';
+import LoadingSpinner from './atoms/LoadingSpinner';
 
 class RestaurantCardsSection extends React.PureComponent {
     renderRestaurantCard = restaurant => {
         return (
             <RestaurantCard
-                key={ restaurant.alias }
+                key={ restaurant.id }
                 alias={ restaurant.alias }
                 name={ restaurant.name }
                 stars={ restaurant.rating }
                 category={ restaurant.categories[0].title }
-                price={ restaurant.price }
+                price={ restaurant.price || '' }
                 isOpen={ !restaurant.is_closed }
                 imageUrl={ restaurant.image_url }
             />
         );
     }
 
-    renderRestaurantCards = restaurants => {
-        if (restaurants)
-            return restaurants.map(this.renderRestaurantCard);
+    areThereAnyRestaurants = () => this.props.restaurants.length > 0;
+
+    renderRestaurantCards = () => {
+        if (this.areThereAnyRestaurants())
+            return this.props.restaurants.map(this.renderRestaurantCard);
         else
-            return <span>No Restaurants Available</span>;
+            return <div>No Restaurants Available</div>;
     };
 
-    renderCardsContainer = () => (
-        <div className='restaurant-cards-container'>
-            { this.renderRestaurantCards(this.props.restaurants) }
-        </div>
-    );
+    haveRestaurantsLoaded = () => !haveNotFinishedLoading(this.props.restaurantsLoadingStatus);
 
-    loadMoreButton = (
+    renderCardsContainer = () => {
+        if (this.haveRestaurantsLoaded())
+            return (
+                <div className='restaurant-cards-container'>
+                    { this.renderRestaurantCards() }
+                </div>
+            );
+        else
+            return <LoadingSpinner />;
+    };
+
+    loadMoreButton = () => (
         <Button
             text='LOAD MORE'
+            disabled={ !this.areThereAnyRestaurants() || !this.haveRestaurantsLoaded() }
             onClick={ () => this.props.onLoadMoreClicked() }
             className='load-more-button'
             large
@@ -48,7 +60,7 @@ class RestaurantCardsSection extends React.PureComponent {
             <div className='restaurant-cards-section' >
                 <h2>{ this.props.title }</h2>
                 { this.renderCardsContainer() }
-                { this.loadMoreButton }
+                { this.loadMoreButton() }
             </div>
         );
     }
@@ -57,9 +69,8 @@ class RestaurantCardsSection extends React.PureComponent {
 RestaurantCardsSection.propTypes = {
     title: PropTypes.string,
     restaurants: PropTypes.array,
+    restaurantsLoadingStatus: PropTypes.string,
     onLoadMoreClicked: PropTypes.func
 }
-
-RestaurantCardsSection.default = {}
 
 export default RestaurantCardsSection;

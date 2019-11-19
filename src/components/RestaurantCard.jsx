@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './RestaurantCardsSection.scss';
 import RestaurantAtAGlance from './RestaurantAtAGlance';
 import { withRouter } from 'react-router-dom';
-
-const LearnMoreButton = (props) => {
-    return <button onClick={ () => props.navigateToDetailsPage() }>LEARN MORE</button>;
-};
+import './RestaurantCardsSection.scss';
 
 const RestaurantCard = (props) => {
     const navigateToDetailsPage = () => props.history.push(`/restaurant-details/${props.alias}`);
+
+    const LearnMoreButton = (props) => {
+        // eslint-disable-next-line react/prop-types
+        return <button onClick={ () => props.navigateToDetailsPage() }>LEARN MORE</button>;
+    };
 
     return (
         <div className='restaurant-card'>
@@ -22,9 +23,7 @@ const RestaurantCard = (props) => {
                 price={ props.price }
                 isOpen={ props.isOpen }
             />
-            <LearnMoreButton
-                navigateToDetailsPage={ navigateToDetailsPage }
-            />
+            <LearnMoreButton navigateToDetailsPage={ navigateToDetailsPage } />
         </div>
     );
 };
@@ -36,7 +35,8 @@ RestaurantCard.propTypes = {
     category: PropTypes.string,
     price: PropTypes.string,
     isOpen: PropTypes.bool,
-    imageUrl: PropTypes.string
+    imageUrl: PropTypes.string,
+    history: PropTypes.object,
 }
 
 export default withRouter(RestaurantCard);

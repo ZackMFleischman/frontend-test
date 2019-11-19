@@ -34,7 +34,7 @@ RestaurantAtAGlance.defaultProps = {
     name: 'Restaurant Name',
     stars: 4.5,
     category: 'Japanese',
-    price: 3,
+    price: '',
     isOpen: true
 };
 

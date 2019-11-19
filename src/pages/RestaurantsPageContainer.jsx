@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RestaurantsPage from './RestaurantsPage';
 import { fetchCategories, fetchRestaurants } from '../actions/YelpActions';
-import { haveNotFinishedLoading, shouldLoad } from '../reducers/reducerUtils/LoadingStatus';
+import { shouldLoad } from '../reducers/reducerUtils/LoadingStatus';
+import { PropTypes } from 'prop-types';
 
 class RestaurantsPageContainer extends React.Component {
     componentDidMount() {
@@ -14,30 +15,32 @@ class RestaurantsPageContainer extends React.Component {
     }
 
     render() {
-        const isLoading = (
-            haveNotFinishedLoading(this.props.categoriesLoadingStatus) &&
-            haveNotFinishedLoading(this.props.restaurantsLoadingStatus)
-        );
-
         return (
             <RestaurantsPage
-                isLoading={ isLoading }
-                categories={ this.props.categories }
-                error={ this.props.error }
-                headerTitle={ this.props.headerTitle }
-                headerDescription={ this.props.headerDescription }
+                headerCopy={ this.props.headerCopy }
             />
         );
     }
 }
 
+RestaurantsPageContainer.propTypes = {
+    categoriesLoadingStatus: PropTypes.string,
+    restaurantsLoadingStatus: PropTypes.string,
+    headerCopy: PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string
+    }),
+    fetchCategories: PropTypes.func,
+    fetchRestaurants: PropTypes.func
+}
+
 const mapStateToProps = (state) => ({
-    categories: state.yelp.categories.data,
     categoriesLoadingStatus: state.yelp.categories.loadingStatus,
     restaurantsLoadingStatus: state.yelp.restaurants.loadingStatus,
-    error: state.yelp.categories.error,
-    headerTitle: state.copy.header.title,
-    headerDescription: state.copy.header.description
+    headerCopy: {
+        title: state.copy.header.title,
+        description: state.copy.header.description
+    }
 });
 
 const mapDispatchToProps = {
