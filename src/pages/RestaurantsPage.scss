@@ -3,5 +3,16 @@
 }
 
 .restaurant-header {
-    background-color: white;
+    font-weight: 100;
+    .header {
+        color: #262626;
+        font-size: 2em;
+    }
+
+    .description {
+        color: #535353;
+        font-size: 1em;
+        margin-bottom: 2em;
+        width: 50%;
+    }
 }

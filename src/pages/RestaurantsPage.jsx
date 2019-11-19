@@ -1,6 +1,4 @@
 import React from 'react';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
 import Header from '../components/atoms/Header';
@@ -11,20 +9,31 @@ import RestaurantCardsSectionContainer from '../components/RestaurantCardsSectio
 import './RestaurantsPage.scss';
 
 const RestaurantsPage = (props) => {
+    const renderHeader = () => {
+        return (
+            <Header
+                className='restaurant-header'
+                title={ props.headerTitle }
+                description={ props.headerDescription }
+            />
+        );
+    };
+
     return (
         <div className='restaurants-page'>
-            <Header title={ props.headerTitle } description={ props.headerDescription } className="restaurant-header" />
+            { renderHeader() }
             <RestaurantFilters />
             <RestaurantCardsSectionContainer />
         </div>
     );
 };
 
-RestaurantsPage.propsTypes = {
+RestaurantsPage.propTypes = {
+    headerTitle: PropTypes.string,
+    headerDescription: PropTypes.string,
     categories: PropTypes.object,
     error: PropTypes.object,
-    headerTitle: PropTypes.string,
-    headerDescription: PropTypes.string
 }
+
 
 export default withLoadingSpinner(RestaurantsPage);

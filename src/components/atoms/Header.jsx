@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const Header = (props) => {
     return (
         <div className={ props.className }>
-            <h1>{ props.title }</h1>
-            <div>{ props.description }</div>
+            <h1 className='header'>{ props.title }</h1>
+            <div className='description'>{ props.description }</div>
         </div>
     );
 }
