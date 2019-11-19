@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchMoreRestaurants } from '../actions/YelpActions';
 import RestaurantsCardsSection from './RestaurantCardsSection';
 import { getFilteredRestaurants, getCurrentRestaurantCategoryDisplayText } from '../selectors/RestaurantSelectors';
+import { getCanLoadMore } from '../selectors/RestaurantSelectors';
 
 const RestaurantsCardsSectionContainer = (props) => {
     const newProps = {
@@ -17,7 +18,8 @@ const RestaurantsCardsSectionContainer = (props) => {
 const mapStateToProps = (state) => ({
     restaurants: getFilteredRestaurants(state),
     title: getCurrentRestaurantCategoryDisplayText(state),
-    restaurantsLoadingStatus: state.yelp.restaurants.loadingStatus
+    restaurantsLoadingStatus: state.yelp.restaurants.loadingStatus,
+    canLoadMore: getCanLoadMore(state)
 });
 
 const mapDispatchToProps = {

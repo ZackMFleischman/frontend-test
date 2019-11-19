@@ -45,20 +45,32 @@ class RestaurantCardsSection extends React.PureComponent {
             return <LoadingSpinner />;
     };
 
-    loadMoreButton = () => (
-        <Button
-            text='LOAD MORE'
-            disabled={ !this.areThereAnyRestaurants() || !this.haveRestaurantsLoaded() }
-            onClick={ () => this.props.onLoadMoreClicked() }
-            className='load-more-button'
-            large
-        />
-    );
+    loadMoreButton = () => {
+        const cantLoadMore = (
+            !this.areThereAnyRestaurants() ||
+            !this.haveRestaurantsLoaded() ||
+            !this.props.canLoadMore
+        );
+
+        return (
+            <Button
+                text='LOAD MORE'
+                disabled={ cantLoadMore }
+                onClick={ () => this.props.onLoadMoreClicked() }
+                className='load-more-button'
+                large
+            />
+        );
+    }
+
+    renderTitle() {
+        return <h2>{ this.props.title }</h2>
+    }
 
     render() {
         return (
             <div className='restaurant-cards-section' >
-                <h2>{ this.props.title }</h2>
+                { this.renderTitle() }
                 { this.renderCardsContainer() }
                 { this.loadMoreButton() }
             </div>
@@ -70,6 +82,7 @@ RestaurantCardsSection.propTypes = {
     title: PropTypes.string,
     restaurants: PropTypes.array,
     restaurantsLoadingStatus: PropTypes.string,
+    canLoadMore: PropTypes.bool,
     onLoadMoreClicked: PropTypes.func
 }
 

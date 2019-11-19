@@ -12,6 +12,8 @@ export const getCurrentRestaurantCategory = (state) => {
     return state.filters && state.filters.selectedCategory;
 }
 
+export const getCanLoadMore = (state) => state.yelp.restaurants.data && state.yelp.restaurants.data.canLoadMore;
+
 const categoriesNotLoaded = (state) => !loadingFinished(state.yelp.categories.loadingStatus);
 
 export const getCurrentRestaurantCategoryDisplayText = (state) => {
@@ -22,7 +24,7 @@ export const getCurrentRestaurantCategoryDisplayText = (state) => {
         return 'All Restaurants';
     } else {
         const categoryData = state.yelp.categories.data.find(category => category.alias === currentCategory);
-        return categoryData.title + ' Restaurants';
+        return categoryData.title;
     }
 }
 

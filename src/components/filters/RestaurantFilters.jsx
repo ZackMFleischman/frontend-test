@@ -1,40 +1,38 @@
 import React from 'react';
 
-import './RestaurantFilters.scss';
 import CategoryFilterContainer from './CategoryFilterContainer';
 import PriceFilterContainer from './PriceFilterContainer';
 import OpenNowFilterContainer from './OpenNowFilterContainer';
 import ClearAllFiltersButton from './ClearAllFiltersButton';
+import './RestaurantFilters.scss';
 
-const RestaurantFilters = (props) => {
-    const FilterItem = ({ render }) => {
-        return (
-            <div className='restaurant-filter-item'>
-                { render() }
+const RestaurantFilters = () => {
+    // eslint-disable-next-line react/prop-types
+    const FilterItem = ({ render }) => (
+        <div className='restaurant-filter-item'>
+            { render() }
+        </div>
+    );
+
+    const renderFilters = () => (
+        <div className='restaurant-filter-wrapper'>
+            <div className='restaurant-filter-options'>
+                <FilterItem render={ () => <div className='restaurant-filter-by'>Filter By:</div> } />
+                <FilterItem render={ () => <OpenNowFilterContainer /> } />
+                <FilterItem render={ () => <PriceFilterContainer /> } />
+                <FilterItem render={ () => <CategoryFilterContainer /> } />
             </div>
-        );
-    }
+            <ClearAllFiltersButton />
+        </div>
+    );
 
     return (
         <>
             <hr className='restaurant-filter-hr' />
-            <div className='restaurant-filter-wrapper'>
-                <div className='restaurant-filter-options'>
-                    <FilterItem render={ () => <div className='restaurant-filter-by'>Filter By:</div> } />
-                    <FilterItem render={ () => <OpenNowFilterContainer /> } />
-                    <FilterItem render={ () => <PriceFilterContainer /> } />
-                    <FilterItem render={ () => <CategoryFilterContainer /> } />
-                </div>
-                <ClearAllFiltersButton />
-            </div>
+            { renderFilters() }
             <hr className='restaurant-filter-hr' />
         </>
     );
 }
-
-RestaurantFilters.propTypes = {
-}
-
-RestaurantFilters.default = {}
 
 export default RestaurantFilters;

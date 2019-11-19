@@ -61,6 +61,7 @@ $chevron_up_translation: calc(#{$chevron_size}/2);
     border-left: 0 solid #BCBCBC;
     border-right: 0 solid #BCBCBC;
     border-bottom: 0 solid #BCBCBC;
+    z-index: 10;
 
     &.dropdown-open {
         max-height: $max_dropdown_height;

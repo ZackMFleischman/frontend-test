@@ -28,8 +28,9 @@
     }
 
     &:disabled {
-        border: 1px solid #999999;
-        background-color: #cccccc;
-        color: #666666;
+        border: 1px solid #E0E0E0;
+        background-color: white;
+        color: #E0E0E0;
+        cursor: initial;
     }
 }

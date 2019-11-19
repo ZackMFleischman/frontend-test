@@ -2,11 +2,14 @@ export const transformRawRestaurantsData = (rawRestaurantsData, category, offset
     const restaurantsArray = rawRestaurantsData.businesses;
     const numRestaurantsFetched = restaurantsArray.length;
     const restaurantMap = restaurantArrayToMap(restaurantsArray);
+    const currentOffsetForCategory = offset + numRestaurantsFetched;
+    const canLoadMore = (rawRestaurantsData.total - currentOffsetForCategory) !== 0;
 
     return {
-        currentOffsetForCategory: offset + numRestaurantsFetched,
         currentCategory: category,
-        restaurantMap
+        restaurantMap,
+        currentOffsetForCategory,
+        canLoadMore
     };
 };
 
