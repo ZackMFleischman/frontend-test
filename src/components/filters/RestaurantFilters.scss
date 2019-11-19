@@ -4,8 +4,15 @@
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.restaurant-filter-hr {
+    margin: 0 -50px 0 -50px;
+    border-top: 0;
+    border-color: #E0E0E0;
+    color: #E0E0E0;
 }
 
 .restaurant-filter-by {
@@ -15,10 +22,12 @@
 .restaurant-filter-options {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .restaurant-filter-item {
-    padding-right: 30px;
+    padding-right: 27px;
     display: flex;
     align-items: center;
+    font-size: 13px;
 }

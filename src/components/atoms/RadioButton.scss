@@ -1,0 +1,12 @@
+@import "UnderlinedAtom";
+
+.radio-button {
+    @extend .underlined-atom;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.radio-button-text {
+    padding-left: 7px;
+}

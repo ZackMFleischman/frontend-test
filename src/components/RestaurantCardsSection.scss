@@ -1,7 +1,6 @@
 .restaurant-cards-section {
     display: flex;
     flex-direction: column;
-    background-color: aqua;
     align-items: center;
 }
 
@@ -10,7 +9,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    background-color: firebrick;
     justify-content: space-evenly;
 }
 
@@ -18,4 +16,8 @@
     border: lightblue 2px solid;
     min-width: 200px;
     min-height: 200px;
+}
+
+.load-more-button {
+    margin: 50px;
 }

@@ -1,9 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import onClickOutside from 'react-onclickoutside';
+import combineClasses from '../../util/CombineClasses';
 import './Dropdown.scss';
-
-const combineClasses = (classNameArray) => classNameArray.join(' ');
 
 class Dropdown extends React.Component {
     constructor(props) {
@@ -60,7 +59,11 @@ class Dropdown extends React.Component {
     };
 
     renderItemList = () => {
-        const itemListClassName = combineClasses(['dropdown-item-list', this.getSizeClass()]);
+        const itemListClassName = combineClasses([
+            'dropdown-item-list',
+            this.getSizeClass(),
+            (this.state.isOpen ? 'dropdown-open' : 'dropdown-collapsed')
+        ]);
 
         return (
             <div className={ itemListClassName }>
@@ -74,10 +77,10 @@ class Dropdown extends React.Component {
             <div className='dropdown-list-item' key={ item.id } onClick={ () => this.props.onDropdownItemClicked(item) }>
                 {
                     item.isSelected
-                        ? <span>S - </span>
-                        : <span>U - </span>
+                        ? <img src='CheckedCircle.png' />
+                        : <img src='EmptyCircle.png' />
                 }
-                <span>{ item.text }</span>
+                <span className='dropdown-list-item-text'>{ item.text }</span>
             </div>
         );
     };
@@ -86,7 +89,7 @@ class Dropdown extends React.Component {
         return (
             <div className='dropdown-wrapper'>
                 { this.renderHeader() }
-                { this.state.isOpen && this.renderItemList() }
+                { this.renderItemList() }
             </div >
         );
     }

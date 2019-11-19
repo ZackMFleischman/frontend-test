@@ -16,15 +16,19 @@ const RestaurantFilters = (props) => {
     }
 
     return (
-        <div className='restaurant-filter-wrapper'>
-            <div className='restaurant-filter-options'>
-                <FilterItem render={ () => <div className='restaurant-filter-by'>Filter By:</div> } />
-                <FilterItem render={ () => <OpenNowFilterContainer /> } />
-                <FilterItem render={ () => <PriceFilterContainer /> } />
-                <FilterItem render={ () => <CategoryFilterContainer /> } />
+        <>
+            <hr className='restaurant-filter-hr' />
+            <div className='restaurant-filter-wrapper'>
+                <div className='restaurant-filter-options'>
+                    <FilterItem render={ () => <div className='restaurant-filter-by'>Filter By:</div> } />
+                    <FilterItem render={ () => <OpenNowFilterContainer /> } />
+                    <FilterItem render={ () => <PriceFilterContainer /> } />
+                    <FilterItem render={ () => <CategoryFilterContainer /> } />
+                </div>
+                <ClearAllFiltersButton />
             </div>
-            <ClearAllFiltersButton />
-        </div>
+            <hr className='restaurant-filter-hr' />
+        </>
     );
 }
 

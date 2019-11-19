@@ -1,0 +1,11 @@
+.underlined-atom {
+    background-color: white;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #BCBCBC;
+    height: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

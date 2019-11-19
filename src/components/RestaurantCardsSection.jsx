@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './RestaurantCardsSection.scss';
 import RestaurantCard from './RestaurantCard';
+import Button from './atoms/Button';
 
 class RestaurantCardsSection extends React.PureComponent {
     renderRestaurantCard = restaurant => {
@@ -34,9 +35,12 @@ class RestaurantCardsSection extends React.PureComponent {
     );
 
     loadMoreButton = (
-        <div>
-            <button style={ { width: '200px' } } onClick={ () => this.props.onLoadMoreClicked() }>Load More</button>
-        </div>
+        <Button
+            text='LOAD MORE'
+            onClick={ () => this.props.onLoadMoreClicked() }
+            className='load-more-button'
+            large
+        />
     );
 
     render() {

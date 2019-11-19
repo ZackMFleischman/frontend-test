@@ -8,6 +8,7 @@ const OpenNowFilter = (props) => {
             isSelected={ props.isSelected }
             text='Open Now'
             onToggle={ props.toggleShowOpenNow }
+            style={ { minWidth: '90px' } }
         />
     );
 };

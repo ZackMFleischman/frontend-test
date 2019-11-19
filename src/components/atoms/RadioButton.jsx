@@ -1,18 +1,14 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import './RadioButton.scss';
+import RadioButtonIcon from './RadioButtonIcon';
 
 class RadioButton extends React.PureComponent {
-    renderRadioIcon = () => {
-        return this.props.isSelected ?
-            <span>⦿</span> :
-            <span>○</span>
-    }
-
     render() {
         return (
-            <div className='radio-button' onClick={ () => this.props.onToggle() }>
-                { this.renderRadioIcon() }
-                <span>{ this.props.text }</span>
+            <div className='radio-button' style={ this.props.style } onClick={ () => this.props.onToggle() }>
+                <RadioButtonIcon isSelected={ this.props.isSelected } />
+                <div className='radio-button-text'>{ this.props.text }</div>
             </div >
         );
     }
@@ -21,7 +17,8 @@ class RadioButton extends React.PureComponent {
 RadioButton.propTypes = {
     isSelected: PropTypes.bool,
     text: PropTypes.string,
-    onToggle: PropTypes.func
+    onToggle: PropTypes.func,
+    style: PropTypes.object
 };
 
 export default RadioButton; 

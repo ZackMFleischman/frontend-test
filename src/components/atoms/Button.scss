@@ -1,0 +1,29 @@
+.button {
+    color: #021F44;
+    border-color: #021F44;
+    font-size: 10px;
+    font-weight: 500; 
+    min-height: 30px;
+    min-width: 125px;
+    cursor: pointer;
+
+    &.large {
+        min-width: 340px;
+        min-height: 40px;
+        font-size: 11px;
+    }
+
+    &:hover {
+        color: white;
+        background-color: #021F44;
+    }
+
+    &:active {
+        color: white;
+        background-color:slategray;
+    }
+
+    &:focus {
+        outline:0;
+    }
+}
