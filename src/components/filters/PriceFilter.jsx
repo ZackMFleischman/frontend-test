@@ -19,6 +19,7 @@ const PriceFilter = (props) => {
             onDropdownItemClicked={ handlePriceItemClicked }
             items={ getPriceItems() }
             sizeSmall
+            disableScroll
         />
     );
 };

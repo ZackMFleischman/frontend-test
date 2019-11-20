@@ -29,7 +29,7 @@ class RestaurantCardsSection extends React.PureComponent {
         if (this.areThereAnyRestaurants())
             return this.props.restaurants.map(this.renderRestaurantCard);
         else
-            return <div style={ { paddingTop: '1em' } }>No Restaurants Available</div>;
+            return <div className='no-restaurants-available'>No Restaurants Available :(</div>;
     };
 
     haveRestaurantsLoaded = () => !haveNotFinishedLoading(this.props.restaurantsLoadingStatus);
@@ -58,13 +58,13 @@ class RestaurantCardsSection extends React.PureComponent {
                 disabled={ cantLoadMore }
                 onClick={ () => this.props.onLoadMoreClicked() }
                 className='load-more-button'
-                large
+                xlarge
             />
         );
     }
 
     renderTitle() {
-        return <h2>{ this.props.title }</h2>
+        return <div className='restaurant-cards-section-title'>{ this.props.title }</div>
     }
 
     render() {

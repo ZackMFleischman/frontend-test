@@ -1,17 +1,19 @@
 @import 'atoms/FadeIn';
 
+$restaurant_card_spacing: 15px;
+
 .restaurant-cards-section {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 
-    h2 {
-        font-size: 1.7em;
-        font-weight: 100;
-        padding: 30px 0px 20px 0px;
-        color: #262626;
-        width: 100%;
-    }
+.restaurant-cards-section-title {
+    font-size: 2.0em;
+    font-weight: 100;
+    padding: 50px 0px 0px 25px;
+    color: #262626;
+    width: 100%;
 }
 
 .restaurant-cards-container {
@@ -19,16 +21,52 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: space-evenly;
 }
 
 .restaurant-card {
     @extend .fade-in;
-    border: lightblue 2px solid;
-    min-width: 200px;
-    min-height: 200px;
+    width: 305px;
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 33px;
+    margin-bottom: 33px ;
+    margin-left: $restaurant_card_spacing;
+    margin-right: $restaurant_card_spacing;
+}
+
+.restaurant-card-image-wrapper {
+    height: 245px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.restaurant-card-image {
+    max-height: 100%;
+}
+
+.at-a-glance-wrapper {
+    height: 10em;
+}
+
+.learn-more-button {
+    height: 3.5em;
+    font-size: 0.9em !important;
+    font-weight: 100;
 }
 
 .load-more-button {
-    margin: 50px;
+    margin: 40px;
+    // height: 3em;
+    // font-size: 1em !important;
+}
+
+.no-restaurants-available {
+   width: 100%; 
+   padding-top: 1em;
+   font-size: 1.6em;
+   text-align: center;
 }

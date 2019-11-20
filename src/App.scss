@@ -1,11 +1,9 @@
-$page_margins: 50px;
-
 .App {
     background-color: white;
     color: black;
     height: 100vh;
     width: 100%;
     box-sizing: border-box;
-    padding-left: $page_margins;
-    padding-right: $page_margins; 
+    padding-left: 35px;
+    padding-right: 35px; 
 }

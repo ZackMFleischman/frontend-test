@@ -4,18 +4,23 @@ import PropTypes from 'prop-types';
 import RestaurantAtAGlance from './RestaurantAtAGlance';
 import { withRouter } from 'react-router-dom';
 import './RestaurantCardsSection.scss';
+import Button from './atoms/Button';
 
-const RestaurantCard = (props) => {
+export const RestaurantCard = (props) => {
     const navigateToDetailsPage = () => props.history.push(`/restaurant-details/${props.alias}`);
 
-    const LearnMoreButton = (props) => {
-        // eslint-disable-next-line react/prop-types
-        return <button onClick={ () => props.navigateToDetailsPage() }>LEARN MORE</button>;
-    };
+    const LearnMoreButton = (props) => (
+        <Button
+            // eslint-disable-next-line react/prop-types
+            onClick={ () => props.navigateToDetailsPage() }
+            text='LEARN MORE'
+            invertedColors
+            className='learn-more-button'
+        />
+    );
 
-    return (
-        <div className='restaurant-card'>
-            <img style={ { maxHeight: '200px' } } src={ props.imageUrl } alt='Restaurant Image' />
+    const renderRestuarantAtAGlance = () => (
+        <div className='at-a-glance-wrapper'>
             <RestaurantAtAGlance
                 name={ props.name }
                 stars={ props.stars }
@@ -23,6 +28,15 @@ const RestaurantCard = (props) => {
                 price={ props.price }
                 isOpen={ props.isOpen }
             />
+        </div>
+    );
+
+    return (
+        <div className='restaurant-card'>
+            <div className='restaurant-card-image-wrapper'>
+                <img className='restaurant-card-image' src={ props.imageUrl } alt='Restaurant Image' />
+            </div>
+            { renderRestuarantAtAGlance() }
             <LearnMoreButton navigateToDetailsPage={ navigateToDetailsPage } />
         </div>
     );

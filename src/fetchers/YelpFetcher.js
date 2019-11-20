@@ -3,7 +3,7 @@ import JsonFetcher from './JsonFetcher';
 import filterByUSRestaurantCategories from './fetcherUtils/FilterByUSRestaurantCategories';
 import { transformRawRestaurantsData, transformRawRestaurantData } from './fetcherUtils/TransformRawRestaurantData';
 
-const restaurantsFetchedPerRequest = 8; // Limit
+const restaurantsFetchedPerRequest = 20; // Limit
 
 class YelpFetcher {
     constructor(baseUrl, jsonFetcher = new JsonFetcher()) {

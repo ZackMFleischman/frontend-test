@@ -1,0 +1,27 @@
+.restaurant-at-a-glance {
+    display: flex;
+    flex-direction: column;
+}
+
+.at-a-glance-name {
+    font-size: 1.3em;
+    font-weight: lighter;
+    color: #333333;
+    padding-top: 0.75em;
+    padding-bottom: 0.3em;
+}
+
+.at-a-glance-details {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    font-size: 0.85em;
+    font-weight: lighter;
+    color: grey;
+    padding-top: 0.4em;
+}
+
+.at-a-glance-text {
+    display: flex;
+    align-items: center;
+}

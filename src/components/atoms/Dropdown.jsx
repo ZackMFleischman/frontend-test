@@ -63,7 +63,8 @@ class Dropdown extends React.Component {
         const itemListClassName = combineClasses([
             'dropdown-item-list',
             this.getSizeClass(),
-            (this.state.isOpen ? 'dropdown-open' : 'dropdown-collapsed')
+            (this.state.isOpen ? 'dropdown-open' : 'dropdown-collapsed'),
+            (this.props.disableScroll && 'no-scroll')
         ]);
 
         return (
@@ -111,7 +112,8 @@ Dropdown.propTypes = {
         isSelected: PropTypes.bool,
     })),
     onDropdownItemClicked: PropTypes.func,
-    sizeSmall: PropTypes.bool
+    sizeSmall: PropTypes.bool,
+    disableScroll: PropTypes.bool
 };
 
 export default onClickOutside(Dropdown);

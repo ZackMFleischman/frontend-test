@@ -8,13 +8,13 @@ import OpenIndicator from './OpenIndicator';
 const RestaurantAtAGlance = (props) => {
     return (
         <div className='restaurant-at-a-glance'>
-            <h2>{ props.name }</h2>
+            <div className='at-a-glance-name'>{ props.name }</div>
             <Stars numStars={ props.stars } />
-            <div style={ { justifyContent: 'space-between', display: 'flex' } }>
-                <div>
+            <div className='at-a-glance-details'>
+                <div className='at-a-glance-text'>
                     <span>{ props.category }</span>
-                    <span> ● </span>
-                    <span>{ props.price }</span>
+                    <span style={ { fontSize: '0.2em', padding: '0 0.4em' } }>   ●   </span>
+                    <span >{ props.price }</span>
                 </div>
                 <OpenIndicator isOpen={ props.isOpen } />
             </div>

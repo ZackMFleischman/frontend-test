@@ -7,7 +7,7 @@ const Stars = props => {
             count={ 5 }
             edit={ false }
             value={ props.numStars }
-            size={ 24 }
+            size={ 20 }
             color1={ 'grey' }
             color2={ '#021E44' }
         />

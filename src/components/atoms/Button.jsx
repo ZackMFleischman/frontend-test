@@ -7,6 +7,8 @@ const Button = (props) => {
     const buttonClass = combineClasses([
         'button',
         props.large && 'large',
+        props.xlarge && 'x-large',
+        props.invertedColors && 'inverted-colors',
         props.className
     ]);
 
@@ -27,11 +29,15 @@ Button.propTypes = {
     className: PropTypes.string,
     onClick: PropTypes.func,
     large: PropTypes.bool,
+    xlarge: PropTypes.bool,
+    invertedColors: PropTypes.bool
 };
 
 Button.defaultProps = {
     disabled: false,
-    large: false
+    large: false,
+    xlarge: false,
+    invertedColors: false
 };
 
 export default Button;

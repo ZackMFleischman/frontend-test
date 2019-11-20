@@ -1,0 +1,17 @@
+.open-now-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.open-now-circle {
+    padding-right: 0.2em;
+    font-size: 1.4em;
+
+    &.green {
+        color:#1EE792; 
+    }
+
+    &.red {
+        color: #FB1938;
+    }
+}
