@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchRestaurantReviews } from '../actions/YelpActions';
 import { haveNotFinishedLoading } from '../reducers/reducerUtils/LoadingStatus';
 import RestaurantReviews from './RestaurantReviews';
+import { PropTypes } from 'prop-types';
 
 class RestaurantReviewsContainer extends React.PureComponent {
     componentDidMount() {
@@ -32,6 +33,13 @@ class RestaurantReviewsContainer extends React.PureComponent {
             />
         );
     }
+}
+
+RestaurantReviewsContainer.propTypes = {
+    restaurantAlias: PropTypes.string,
+    reviewsLoadingStatus: PropTypes.string,
+    reviewsMap: PropTypes.object,
+    fetchRestaurantReviews: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({

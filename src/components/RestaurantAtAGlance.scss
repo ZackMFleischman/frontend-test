@@ -9,6 +9,10 @@
     color: #333333;
     padding-top: 0.75em;
     padding-bottom: 0.3em;
+
+    &.big {
+        font-size: 3em;
+    }
 }
 
 .at-a-glance-details {
@@ -19,6 +23,10 @@
     font-weight: lighter;
     color: grey;
     padding-top: 0.4em;
+
+    &.big {
+        font-size: 1.4em;
+    }
 }
 
 .at-a-glance-text {

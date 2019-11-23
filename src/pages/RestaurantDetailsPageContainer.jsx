@@ -10,8 +10,7 @@ class RestaurantDetailsPageContainer extends React.PureComponent {
     getRestaurantAliasFromUrl = () => this.props.match.params.restaurantAlias;
 
     componentDidMount() {
-        if (shouldLoad(this.props.restaurantsLoadingStatus))
-            this.props.fetchRestaurant(this.getRestaurantAliasFromUrl());
+        this.props.fetchRestaurant(this.getRestaurantAliasFromUrl());
     }
 
     goToMainPage = () => this.props.history.push('/');
@@ -24,8 +23,13 @@ class RestaurantDetailsPageContainer extends React.PureComponent {
             return undefined;
     }
 
+    restaurantDataDoesNotYetHavePhotos = () => !('photos' in this.getRestaurantDataFromUrl());
+
     render() {
-        const isLoading = haveNotFinishedLoading(this.props.restaurantsLoadingStatus);
+        const isLoading = (
+            haveNotFinishedLoading(this.props.restaurantsLoadingStatus) ||
+            this.restaurantDataDoesNotYetHavePhotos()
+        );
 
         return (
             <RestaurantsDetailsPage

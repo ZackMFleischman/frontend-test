@@ -32,7 +32,7 @@ const RestaurantReview = (props) => {
         <>
             { props.useSeparator && <hr style={ {
                 width: '100%',
-                margin: '70px 0'
+                margin: '60px 0'
             } } /> }
             <div className='review-wrapper'>
                 { renderReviewerImage() }
@@ -44,7 +44,7 @@ const RestaurantReview = (props) => {
 };
 
 RestaurantReview.propTypes = {
-    user: PropTypes.string,
+    user: PropTypes.object,
     text: PropTypes.string,
     rating: PropTypes.number,
     timeCreated: PropTypes.string,
