@@ -32,6 +32,9 @@
             "jsx",
             "json"
         ],
+        "moduleNameMapper": {
+            "^.+\\.(scss|css)?$": "<rootDir>StyleMock.js"
+        },
         "transform": {
             "^.+\\.(js|jsx)?$": "babel-jest"
         },

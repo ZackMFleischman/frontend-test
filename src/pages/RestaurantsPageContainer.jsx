@@ -5,7 +5,7 @@ import { fetchCategories, fetchRestaurants } from '../actions/YelpActions';
 import { shouldLoad } from '../reducers/reducerUtils/LoadingStatus';
 import { PropTypes } from 'prop-types';
 
-class RestaurantsPageContainer extends React.Component {
+export class RestaurantsPageContainer extends React.Component {
     componentDidMount() {
         if (shouldLoad(this.props.categoriesLoadingStatus))
             this.props.fetchCategories();

@@ -8,7 +8,7 @@ import RestaurantCardsSectionContainer from '../components/RestaurantCardsSectio
 import './RestaurantsPage.scss';
 
 const RestaurantsPage = (props) => {
-    const RestaurantHeader = () => {
+    const renderHeader = () => {
         return (
             <Header
                 className='restaurant-header'
@@ -20,7 +20,7 @@ const RestaurantsPage = (props) => {
 
     return (
         <div className='restaurants-page'>
-            <RestaurantHeader />
+            { renderHeader() }
             <RestaurantFilters />
             <RestaurantCardsSectionContainer />
         </div>
@@ -31,8 +31,7 @@ RestaurantsPage.propTypes = {
     headerCopy: PropTypes.shape({
         title: PropTypes.string,
         description: PropTypes.string
-    }),
-    error: PropTypes.object,
+    })
 }
 
 
