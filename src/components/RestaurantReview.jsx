@@ -44,7 +44,10 @@ const RestaurantReview = (props) => {
 };
 
 RestaurantReview.propTypes = {
-    user: PropTypes.object,
+    user: PropTypes.shape({
+        name: PropTypes.string,
+        image_url: PropTypes.string
+    }),
     text: PropTypes.string,
     rating: PropTypes.number,
     timeCreated: PropTypes.string,

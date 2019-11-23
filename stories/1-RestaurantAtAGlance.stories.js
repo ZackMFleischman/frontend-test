@@ -30,3 +30,13 @@ storiesOf('RestaurantsAtAGlance', module)
             isOpen={ open }
         />
     ))
+    .add('big', () => (
+        <RestaurantAtAGlance
+            name={ 'Restaurant Name' }
+            stars={ 2.5 }
+            category={ 'Thai' }
+            price={ '$' }
+            isOpen={ open }
+            big
+        />
+    ))
