@@ -1,0 +1,38 @@
+.review-wrapper {
+    display: flex;
+}
+
+.review-name-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+}
+
+.review-name {
+    font-size: 1.25em;
+}
+
+.review-date {
+    color: #737373;
+    padding: 7px 0;
+}
+
+.review-image-wrapper {
+    min-width: 120px;
+}
+
+.review-image {
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.review-text-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-text {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #232323;
+}

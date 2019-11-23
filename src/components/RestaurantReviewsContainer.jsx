@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchRestaurantReviews } from '../actions/YelpActions';
-import { haveNotFinishedLoading, shouldLoad } from '../reducers/reducerUtils/LoadingStatus';
+import { haveNotFinishedLoading } from '../reducers/reducerUtils/LoadingStatus';
 import RestaurantReviews from './RestaurantReviews';
 
 class RestaurantReviewsContainer extends React.PureComponent {

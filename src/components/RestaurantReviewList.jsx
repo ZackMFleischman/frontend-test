@@ -1,26 +1,6 @@
 import React from 'react';
-import Stars from '../components/atoms/Stars';
 import { PropTypes } from 'prop-types';
-
-const RestaurantReview = (props) => {
-    const { user, text, rating, time_created } = props.review;
-    return (
-        <>
-            { props.useSeparator && <hr /> }
-            <div>
-                <img style={ { maxHeight: '100px' } } src={ user.image_url } alt='Reviewer Image'></img>
-                <div style={ { display: 'flex', flexDirection: 'column' } }>
-                    <span>{ user.name }</span>
-                    <span>{ time_created }</span>
-                </div>
-                <div>
-                    <Stars numStars={ rating } />
-                    <p>{ text }</p>
-                </div>
-            </div>
-        </>
-    );
-};
+import RestaurantReview from './RestaurantReview';
 
 const RestaurantReviewList = (props) => {
     if (!props.reviews) return null;
@@ -29,9 +9,16 @@ const RestaurantReviewList = (props) => {
         <RestaurantReview
             key={ review.id }
             useSeparator={ index !== 0 }
-            review={ review }
+            user={ review.user }
+            text={ review.text }
+            rating={ review.rating }
+            timeCreated={ review.time_created }
         />
     ));
 }
+
+RestaurantReviewList.propTypes = {
+    reviews: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default RestaurantReviewList;
