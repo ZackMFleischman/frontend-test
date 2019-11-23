@@ -1,30 +1,45 @@
-import YelpFetcher from './YelpFetcher';
+import YelpFetcher, { restaurantsFetchedPerRequest } from './YelpFetcher';
 
 describe('YelpFetcher tests', () => {
+    let fetchJson;
+    let yelpFetcher;
+
     const baseUrl = 'http://baseUrl.com';
     const getExpectedUrl = (path) => `${baseUrl}${path}`;
-    const fetchJson = jest.fn().mockResolvedValue({});
-    const mockJsonFetcher = { fetchJson };
-    const yelpFetcher = new YelpFetcher(baseUrl, mockJsonFetcher);
 
-    beforeEach(() => fetchJson.mockReset());
+    const mockRestaurantsJson = ({
+        total: 100,
+        businesses: [{ alias: 'a' }, { alias: 'b' }, { alias: 'c' }]
+    });
+
+
+    beforeEach(() => {
+        fetchJson = jest.fn(() => { return Promise.resolve({}); });
+        yelpFetcher = new YelpFetcher(baseUrl, { fetchJson });
+    });
 
     it('fetchCategories should fetch the right url', async () => {
         const expectedUrl = getExpectedUrl('/categories');
-        await yelpFetcher.fetchAmericanRestaurantCategories();
+        await yelpFetcher.fetchUSRestaurantCategories();
         expect(fetchJson).toHaveBeenCalledWith(expectedUrl);
     });
 
     it('fetchRestaurants should fetch the right url without a category', async () => {
-        const expectedUrl = getExpectedUrl('/businesses/search?term=restaurants&location=Las%20Vegas');
+        const expectedUrl = getExpectedUrl(`/businesses/search?limit=${restaurantsFetchedPerRequest}&term=restaurants&location=Las%20Vegas`);
+        fetchJson.mockResolvedValue(mockRestaurantsJson);
         await yelpFetcher.fetchRestaurants();
         expect(fetchJson).toHaveBeenCalledWith(expectedUrl);
     });
 
+    it('fetchRestaurants should throw if it doesnt get good data', async () => {
+        await expect(yelpFetcher.fetchRestaurants()).rejects.toThrow();
+    });
+
     it('fetchRestaurants should fetch the right url with a category', async () => {
         const category = 'Japanese';
-        const expectedUrl = getExpectedUrl(`/businesses/search?category=${category}&term=restaurants&location=Las%20Vegas`);
+        const expectedUrl = getExpectedUrl(`/businesses/search?categories=${category}&limit=${restaurantsFetchedPerRequest}&term=restaurants&location=Las%20Vegas`);
 
+        fetchJson.mockResolvedValue(mockRestaurantsJson);
         await yelpFetcher.fetchRestaurants(category);
 
         expect(fetchJson).toHaveBeenCalledWith(expectedUrl);

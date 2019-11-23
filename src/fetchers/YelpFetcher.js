@@ -3,7 +3,7 @@ import JsonFetcher from './JsonFetcher';
 import filterByUSRestaurantCategories from './fetcherUtils/FilterByUSRestaurantCategories';
 import { transformRawRestaurantsData, transformRawRestaurantData } from './fetcherUtils/TransformRawRestaurantData';
 
-const restaurantsFetchedPerRequest = 20; // Limit
+export const restaurantsFetchedPerRequest = 20; // Limit
 
 class YelpFetcher {
     constructor(baseUrl, jsonFetcher = new JsonFetcher()) {
@@ -20,7 +20,7 @@ class YelpFetcher {
         const queryParams = getQueryParameters({
             categories: category,
             limit: restaurantsFetchedPerRequest.toString(),
-            offset: offset.toString(),
+            offset: offset !== 0 ? offset.toString() : undefined,
             term: 'restaurants',
             location: 'Las Vegas',
         });

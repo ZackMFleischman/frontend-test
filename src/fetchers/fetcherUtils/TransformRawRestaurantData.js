@@ -1,4 +1,6 @@
 export const transformRawRestaurantsData = (rawRestaurantsData, category, offset) => {
+    if (!rawRestaurantsData || !rawRestaurantsData.businesses) throw new Error('Bad restaurants data!')
+
     const restaurantsArray = rawRestaurantsData.businesses;
     const numRestaurantsFetched = restaurantsArray.length;
     const restaurantMap = restaurantArrayToMap(restaurantsArray);

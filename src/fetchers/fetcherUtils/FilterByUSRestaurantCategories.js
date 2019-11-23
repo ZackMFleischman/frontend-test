@@ -1,4 +1,6 @@
 const filterByUSRestaurantCategories = (categoriesJson) => {
+    if (!categoriesJson || !categoriesJson.categories) return [];
+
     return categoriesJson.categories.filter(category => {
         const isRestaurantCategory = category.parent_aliases.includes('restaurants');
         const isInBlacklist = category.country_blacklist.includes('US');
