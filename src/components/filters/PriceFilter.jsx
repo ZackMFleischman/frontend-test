@@ -20,6 +20,7 @@ const PriceFilter = (props) => {
             items={ getPriceItems() }
             sizeSmall
             disableScroll
+            testId='PriceFilter'
         />
     );
 };

@@ -18,8 +18,6 @@ const categoriesNotLoaded = (state) => !loadingFinished(state.yelp.categories.lo
 
 export const getCurrentRestaurantCategoryDisplayText = (state) => {
     const currentCategory = getCurrentRestaurantCategory(state);
-    console.log('categories not loaded ' + categoriesNotLoaded(state));
-    console.log('currentCat: ' + currentCategory);
     if (categoriesNotLoaded(state) || !currentCategory || currentCategory === 'all') {
         return 'All Restaurants';
     } else {

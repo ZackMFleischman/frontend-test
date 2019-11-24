@@ -8,6 +8,7 @@ const ClearAllFiltersButton = ({ clearAllFilters, disabled }) => (
             text='CLEAR ALL'
             disabled={ disabled }
             onClick={ () => clearAllFilters() }
+            testId='clearAll'
         />
     </div>
 );

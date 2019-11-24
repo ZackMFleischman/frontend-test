@@ -8,4 +8,3 @@ export const rootReducer = combineReducers({
     filters: filterReducer,
     copy: (state = getStaticCopy()) => state
 });
-

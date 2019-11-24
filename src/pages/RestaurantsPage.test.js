@@ -1,7 +1,7 @@
 import RestaurantsPage from './RestaurantsPage';
 import getComponentFactory from '../testUtils/GetComponentFactory';
 
-describe('RestaurantsPageContainer tests', () => {
+describe('RestaurantsPage tests', () => {
     const mockHeaderCopy = { title: 'title', description: 'description' };
     const { getShallow } = getComponentFactory(RestaurantsPage, {
         headerCopy: mockHeaderCopy

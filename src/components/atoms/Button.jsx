@@ -17,6 +17,7 @@ const Button = (props) => {
             className={ buttonClass }
             onClick={ props.onClick }
             disabled={ props.disabled }
+            data-test-id={ props.testId }
         >
             { props.text }
         </button>
@@ -30,7 +31,8 @@ Button.propTypes = {
     onClick: PropTypes.func,
     large: PropTypes.bool,
     xlarge: PropTypes.bool,
-    invertedColors: PropTypes.bool
+    invertedColors: PropTypes.bool,
+    testId: PropTypes.string
 };
 
 Button.defaultProps = {

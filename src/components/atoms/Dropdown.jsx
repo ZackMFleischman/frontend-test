@@ -82,7 +82,12 @@ class Dropdown extends React.Component {
 
     renderItem = (item) => {
         return (
-            <div className='dropdown-list-item' key={ item.id } onClick={ () => this.props.onDropdownItemClicked(item) }>
+            <div
+                className='dropdown-list-item'
+                key={ item.id }
+                onClick={ () => this.props.onDropdownItemClicked(item) }
+                data-test-id={ `${this.props.testId || ''}-${item.text}` }
+            >
                 {
                     item.isSelected
                         ? <img src='CheckedCircle.png' />
@@ -95,7 +100,7 @@ class Dropdown extends React.Component {
 
     render() {
         return (
-            <div className='dropdown-wrapper'>
+            <div className='dropdown-wrapper' data-test-id={ this.props.testId || '' }>
                 { this.renderHeader() }
                 { this.renderItemList() }
             </div >
@@ -113,7 +118,8 @@ Dropdown.propTypes = {
     })),
     onDropdownItemClicked: PropTypes.func,
     sizeSmall: PropTypes.bool,
-    disableScroll: PropTypes.bool
+    disableScroll: PropTypes.bool,
+    testId: PropTypes.string
 };
 
 export default onClickOutside(Dropdown);
